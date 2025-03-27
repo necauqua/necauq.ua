@@ -1,0 +1,326 @@
+categories:
+- name: Keys
+  commands:
+  - name: up
+    doc: |
+      Hold <kbd>W</kbd> for a duration of 1-500ms, defaulting to 500.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: left
+    doc: |
+      Hold <kbd>A</kbd> for a duration of 1-500ms, defaulting to 500.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: down
+    doc: |
+      Hold <kbd>S</kbd> for a duration of 1-500ms, defaulting to 500.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: right
+    doc: |
+      Hold <kbd>D</kbd> for a duration of 1-500ms, defaulting to 500.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: interact
+    doc: |
+      Press <kbd>E</kbd>.
+  - name: slot
+    doc: |
+      Press <kbd>1</kbd> through <kbd>8</kbd>.
+    args:
+    - name: slot
+      doc: a number in range from 1 to 8
+      optional: false
+  - name: open-inventory
+    doc: |
+      Press <kbd>Tab</kbd> _only if_ the inventory is closed.
+
+      This command also waits for the game inventory state to actually change.
+      Also this command moves the mouse to the top left corner of the screen to
+      force mouse movement after opening the inventory, since if you don't move
+      it the game does not register hovering over slots lol.
+  - name: close-inventory
+    doc: |
+      Press <kbd>Tab</kbd> _only if_ the inventory is opened.
+
+      This command also waits for the game inventory state to actually change.
+- name: Mouse
+  commands:
+  - name: look
+    doc: |
+      Position the mouse relative to the player on the screen.
+
+      For example, `look:0:0~` will move the mouse to the player's position - but
+      note that camera will move, quickly making the mouse position no longer be
+      on the player.
+
+      This is extremely useful, for example `slot:5~ look:0:-70~ hold~` to douse
+      Minä.
+    args:
+    - name: dx
+      doc: number
+      optional: false
+    - name: dy
+      doc: number
+      optional: false
+  - name: look-right
+    doc: |
+      A shortcut for `look:0:500~`.
+  - name: look-left
+    doc: |
+      A shortcut for `look:0:-500~`.
+  - name: look-down
+    doc: |
+      A shortcut for `look:500:0~`.
+  - name: look-up
+    doc: |
+      A shortcut for `look:-500:0~`.
+  - name: mouse
+    doc: |
+      Move the mouse to the absolute position on the screen.
+
+      The screen is 1920x1080, and the origin is in the center of it,
+      so `mouse:0:0~` will move the mouse to the center of the screen.
+    args:
+    - name: x
+      doc: number
+      optional: false
+    - name: 'y'
+      doc: number
+      optional: false
+  - name: mouse-move
+    doc: |
+      Move the mouse relative to its current position.
+    args:
+    - name: dx
+      doc: number
+      optional: false
+    - name: dy
+      doc: number
+      optional: false
+  - name: click
+    doc: |
+      Click the left mouse button.
+  - name: throw
+    doc: |
+      Click the right mouse button.
+  - name: hold
+    doc: |
+      Hold left mouse button down for a duration of 1-500ms, defaulting to 500.
+
+      An example of consistently dragging an item in your inventory:
+      ```tpn
+      open-inventory~ hotbar:5~ hold~ close-inventory~ | wait:250~ hotbar:8~
+      ```
+      You can replace `hotbar:8~` with something like `mouse:0:0~` if you want a
+      little tomfoolery, but that will get you voted into the shadow realm.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: hotbar
+    doc: |
+      A helper to move the mouse to the hotbar slot without you having to guess slot coordinates.
+    args:
+    - name: slot
+      doc: a number in range from 1 to 24
+      optional: false
+  - name: wand
+    doc: |
+      A helper to move the mouse to the wand slot without you having to guess slot coordinates.
+    args:
+    - name: wand
+      doc: a number in range from 1 to 4
+      optional: false
+    - name: slot
+      doc: a number in range from 1 to 26
+      optional: false
+  - name: restore-autosave
+    doc: |
+      A shortcut for `mouse:-100:85~`.
+
+      Moves the mouse to the position of the 'Restore' button on the autosave
+      screen. You can type `restore-autosave~ click~` to click it real fast.
+- name: Util
+  commands:
+  - name: ping
+    doc: |
+      Respond with "pong!".
+    global_gate: '42s'
+  - name: last-error
+    doc: |
+      Respond with the last error message for user. Global cooldown 5s.
+
+      Last error message is set when you run invalid commands, or if the command
+      execution managed to crash somehow. In the latter case, you'll be given the
+      message id - please send it to me to look at logs and fix the issue.
+    global_gate: '15s'
+  - name: seed
+    doc: |
+      Get the current seed (surely you are not planning to look at noitool, right?)
+    global_gate: '15s'
+  - name: wait
+    doc: |
+      Wait for a duration of 1-500ms, defaulting to 500.
+
+      Very useful for multi-command messages.
+    args:
+    - name: millis
+      doc: non-negative number, at most 500, optional
+      optional: true
+  - name: pause
+    doc: |
+      Pause the game.
+
+      This actually just presses the <kbd>Esc</kbd> key.
+
+      And yes, chatters will be able to move the mouse around and click stuff, so
+      this command is kinda annoying without `full-stop~` as they could mess up
+      the settings or start a different gamemode.
+    permission: Moderator
+  - name: full-stop
+    doc: |
+      Stop processing commands from everyone below the moderator level.
+    permission: Moderator
+  - name: full-ahead
+    doc: |
+      Undo the effect of `full-stop~`.
+    permission: Moderator
+  - name: restart
+    doc: |
+      (Re)start the game immediately. This is the same as a successful
+      `vote-restart~`, but instant.
+    permission: Verified
+    global_gate: '2m'
+  - name: reset
+    doc: |
+      Reset the game (deleting the current world) immediately. This is the same
+      as a successful `vote-reset~`, but instant.
+    permission: Moderator
+    global_gate: '2m'
+- name: Voting
+  commands:
+  - name: 'yes'
+    doc: |
+      Vote yes in an ongoing vote.
+  - name: 'no'
+    doc: |
+      Vote no in an ongoing vote.
+  - name: is-vote
+    doc: |
+      Check if there is an ongoing vote and what it is about.
+    global_gate: '10s'
+  - name: votekick
+    doc: |
+      If several(!) people run this command with the same Twitch **login** (this
+      is important, use their login, not display name) as an argument - this will
+      start a vote to send that user to the shadow realm.
+
+      The vote has to have >=70% yes votes for them to get yeeted.
+
+      By "shadow realm" I mean that their commands will be ignored - initially
+      for an hour, but if they get voted for the second time then _forever_,
+      unless I personally clear them.
+
+      This is obviously to deal with trolls and other problematic users. Channel
+      moderators and above are immune.
+
+      Be aware that there can be only one vote at a time and this command has a
+      large per-user cooldown, so dont waste it.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    sender_gate: '5m'
+  - name: banish
+    doc: |
+      Instantly banish a user to the shadow realm. Thin ice rule applies.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    permission: TwitchStaff
+  - name: pull-out
+    doc: |
+      Restore users ability to use the bot, bringing them back from the shadow
+      realm regardless of their crimes.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    permission: Moderator
+  - name: shadowbanned
+    doc: |
+      Check if a user was yeeted into the shadow realm. Per-user 15 second
+      cooldown.
+
+      The user will or will not return depending on if it was their first
+      offence, and if they dipped their toes in the shadow realm previously then
+      they're on thin ice.
+
+      If _you_ are yeeted currently (or forever), the bot ignores you utterly, so
+      this won't work ¯\\\_(ツ)_/¯.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    sender_gate: '15s'
+  - name: vote-restart
+    doc: |
+      This allows to start a vote to restart the game in case it crashed or got
+      stuck or whatever, and I'm not there to fix it.
+
+      This command could fix a lot of issues as it is fully kills and restarts
+      everything (like the OBS capture might get broken etc).
+
+      Needs several(!) people to run this to start the vote, and the vote itself
+      has to have >=70% yes votes.
+
+      Be aware that there can be only one vote at a time and this command has a
+      large per-user cooldown, so dont waste it.
+    sender_gate: '5m'
+  - name: vote-reset
+    doc: |
+      This allows to start a vote to restart the game and ***delete the world***,
+      in case you got soft-locked or the world is corrupted etc.
+
+      Needs several(!) people to run this to start the vote, and the vote itself
+      has to have >=70% yes votes.
+
+      Be aware that there can be only one vote at a time and this command has a
+      large per-user cooldown, so dont waste it.
+    sender_gate: '5m'
+permissions:
+- name: Caster
+  description: Only the broadcaster can use this command.
+  level: 7
+- name: Moderator
+  description: Channel moderators and above can use this command.
+  level: 6
+- name: TwitchAdmin
+  description: Twitch administrators and above can use this command.
+  level: 5
+- name: TwitchStaff
+  description: Twitch staff and above can use this command.
+  level: 4
+- name: Vip
+  description: Channel VIPs and above can use this command.
+  level: 3
+- name: Verified
+  description: Verified users (partners) and above can use this command.
+  level: 2
+- name: Subscriber
+  description: Channel subscribers and above can use this command.
+  level: 1
+- name: Viewer
+  description: Anyone can use this command.
+  level: 0
+

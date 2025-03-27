@@ -42,6 +42,9 @@ target = 'static'
 [markup.goldmark.renderer]
 unsafe = true
 
+[[module.imports]]
+path = "github.com/KKKZOZ/hugo-admonitions"
+
 [[menu.main]]
 name = "Home"
 url = "/"
@@ -76,7 +79,7 @@ dateFormat = '2006-01-02' # go date formatting is so annoying, you cant add 1 to
 mainSectionTitle = "Posts"
 postsOnHomePage = 10
 
-css = ["css/custom.css"]
+css = ["css/custom-v2.css"]
 
 [params.comments]
 enabled = false # todo enable after pushed to github?.

@@ -1,0 +1,66 @@
+<style>
+  h3+ul {
+    margin-top: -1.5rem;
+  }
+
+  p+ul {
+    margin-top: -0.8rem;
+  }
+
+  .pill {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 7px;
+    background: #335;
+  }
+
+  .timeout {
+    color: #999;
+  }
+</style>
+
+{{ range .Site.Data.tpn_commands.categories }}
+<h3>{{ .name }}</h3>
+<ul>
+  {{ range .commands }}
+  <li>
+    <p class="highlight">
+      {{ if .args }}
+      <span class="verb">{{ .name }}</span>{{ range .args }}:<span class="param">{{ .name }}</span>{{ if .optional }}?{{
+      end }}{{ end }}<span class="verb">~</span>
+      {{ else }}
+      <span class="verb">{{ .name }}~</span>
+      {{ end }}
+      {{ if .permission }}
+      <span class="pill">>=<a href="#perm-{{ .permission }}">{{ .permission }}</a></span>
+      {{ end }}
+    </p>
+    <p>{{ .doc | markdownify }}</p>
+    {{ if .global_gate }}
+    <p class="timeout">Global timeout: {{ .global_gate }}</p>
+    {{ end }}
+    {{ if .sender_gate }}
+    <p class="timeout">Per-user timeout: {{ .sender_gate }}</p>
+    {{ end }}
+    {{ if .args }}
+    <p>Arguments:</p>
+    <ul>
+      {{ range .args }}
+      <li>{{ .name }}: {{ .doc | markdownify }}</li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </li>
+  {{ end }}
+</ul>
+{{ end }}
+
+<h2>Permission levels</h2>
+I am obviously just looking at the message badges lmao
+<ul>
+  {{ range .Site.Data.tpn_commands.permissions }}
+  <li id="perm-{{ .name }}">
+    <small>({{ .level }})</small> <b>{{ .name }}</b> - {{ .description }}
+  </li>
+  {{ end }}
+</ul>
