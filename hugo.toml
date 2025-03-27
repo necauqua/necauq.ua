@@ -8,7 +8,8 @@ title = 'necauq.ua'
 theme = 'github.com/necauqua/hugo-theme-cactus'
 # theme = '/home/necauqua/projects/contrib/hugo-theme-cactus'
 
-copyright = 'necauqua'
+enableGitInfo = true
+frontmatter.lastmod = ['modified', 'date']
 
 # make the file structure not suck ass
 themesDir = 'src/themes'

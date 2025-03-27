@@ -1,0 +1,27 @@
+{{ with .GitInfo }}
+<div class="git-info-container">
+  <div class="git-info-box">
+    <span class="git-last-modified">Last modified {{ .CommitDate.Format "2006-01-02 15:04:05" }} via</span>
+    <div class="git-subject">
+      <a href="https://github.com/necauqua/necauq.ua/commit/{{ .Hash }}" class="git-hash" target="_blank">
+        {{ .AbbreviatedHash }}</a>
+      {{ .Subject }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+<footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; {{ now.Format "2006" }} necauqua
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</footer>

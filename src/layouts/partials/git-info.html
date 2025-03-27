@@ -1,0 +1,38 @@
+{{ with .GitInfo }}
+<style>
+  .git-info-container {
+    display: flex;
+    justify-content: end;
+  }
+
+  a.git-hash {
+    background-image: linear-gradient(transparent, transparent 5px, #666 5px, #666);
+    color: #666;
+  }
+
+  a.git-hash:hover {
+    background-image: linear-gradient(transparent, transparent 5px, #666 5px, #666);
+  }
+
+  .git-info-box {
+    padding: 0.5rem;
+    flex-direction: column;
+    font-size: 0.6rem;
+    color: #666;
+  }
+
+  .git-last-modified {
+    font-size: 0.5rem;
+  }
+</style>
+<div class="git-info-container">
+  <div class="git-info-box">
+    <span class="git-last-modified">Last modified {{ .CommitDate.Format "2006-01-02 15:04:05" }} via</span>
+    <div class="git-subject">
+      <a href="https://github.com/necauqua/necauq.ua/commit/{{ .Hash }}" class="git-hash" target="_blank">
+        {{ .AbbreviatedHash }}</a>
+      {{ .Subject }}
+    </div>
+  </div>
+</div>
+{{ end }}
