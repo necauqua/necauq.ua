@@ -1,0 +1,33 @@
+html {
+  scrollbar-gutter: stable;
+  /* remove that weird line cactus has?
+     esp. since it doesn't play well with the above */
+  border: none;
+}
+
+/* a pleasant fade-in-out on chrome for free  */
+@view-transition {
+  navigation: auto;
+}
+
+#dot {
+  /* inline-block messes with the height */
+  display: inline-flex;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s;
+}
+
+#title {
+  display: flex;
+}
+
+#title>h1:hover #dot {
+  width: 1ch;
+}
+
+/* remove cactus hover ungreyscaling, looks bad with both my avatar and the view transition */
+#logo {
+  filter: none !important;
+}
+

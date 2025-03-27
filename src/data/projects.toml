@@ -1,0 +1,72 @@
+[[list]]
+name = "Noita Utility Box"
+url = "https://github.com/necauqua/noita-utility-box"
+desc = '''
+A collection of memory-reading utilities for Noita.\
+Specifically good for finding player coordinates in real time, which is useful
+for.. things
+'''
+
+[[list]]
+name = "Negative Streaks"
+url = "https://github.com/necauqua/negative-streaks"
+desc = '''
+A tiny engine mod for Noita that makes winstreaks go into negatives on
+consecutive deaths.\
+Inspired by [DunkOrSlam](https://twitch.tv/DunkOrSlam)
+'''
+
+[[list]]
+name = "nxml-rs"
+url = "https://github.com/necauqua/nxml-rs"
+desc = '''
+A port of a port of a.. of the NXML library to Rust.\
+It's a library for parsing XML-like text with a focus on being 100%
+compatible with Noita, which uses a simplistic hand-rolled XML parser that does
+not comply with any specs in the slightest
+'''
+
+[[list]]
+name = "pinkie"
+url = "https://github.com/necauqua/pinkie"
+desc = '''
+A tiny scoped-CSS-in-Rust-kind-of crate.\
+Inspired by [maud](https://maud.lambda.xyz)
+'''
+
+[[list]]
+name = "opal-uefi-greeter"
+url = "https://github.com/necauqua/opal-uefi-greeter"
+desc = '''
+A simple UEFI bootloader passthrough written in Rust that can unlock a
+self-encrypting SSD and boot into whatever is on it.
+'''
+
+[[list]]
+name = "chiseled-me"
+url = "https://github.com/necauqua/chiseled-me"
+desc = '''
+A mod for Minecraft that (in my extremely unbiased opinion) does the
+"shrink/enlarge an entity ant man style" with least amount of jank.\
+At least it would've been like that if I kept working on it.
+'''
+
+[[list]]
+name = "subpocket"
+url = "https://github.com/necauqua/subpocket"
+desc = '''
+Another minecraft mod I made - this one adds an infinite inventory storage to
+bound to the player, with a quirk being that there are no slots, items can
+overlap and you need to pixel-perfectly click on the item itself to interact
+with it. Stack size is unlimited though
+'''
+
+[[list]]
+name = "chronotube"
+url = "https://github.com/necauqua/chronotube"
+desc = '''
+A small Firefox addon I made ages ago and quietly use to this day.\
+It updates the URL of the tab playing YouTube/Twitch videos to include the
+timestamp parameter - great for sharing links and to reload the page/restart
+the browser
+'''
