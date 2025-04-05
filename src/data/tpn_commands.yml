@@ -154,15 +154,26 @@ categories:
   - name: ping
     doc: |
       Respond with "pong!".
-    global_gate: '42s'
+
+      I heard that scarcity creates value, so getting a pong is very _cool_ and
+      _pog_, because only one person can get it in an hour.
+    global_gate: '1h'
+  - name: info
+    doc: |
+      Show the command instruction link.
+    global_gate: '15s'
+  - name: discord
+    doc: |
+      Show the discord server link.
+    global_gate: '15s'
   - name: last-error
     doc: |
-      Respond with the last error message for user. Global cooldown 5s.
+      Respond with the last error message for user.
 
       Last error message is set when you run invalid commands, or if the command
       execution managed to crash somehow. In the latter case, you'll be given the
       message id - please send it to me to look at logs and fix the issue.
-    global_gate: '15s'
+    sender_gate: '15s'
   - name: seed
     doc: |
       Get the current seed (surely you are not planning to look at noitool, right?)
@@ -194,18 +205,6 @@ categories:
     doc: |
       Undo the effect of `full-stop~`.
     permission: Moderator
-  - name: restart
-    doc: |
-      (Re)start the game immediately. This is the same as a successful
-      `vote-restart~`, but instant.
-    permission: Verified
-    global_gate: '2m'
-  - name: reset
-    doc: |
-      Reset the game (deleting the current world) immediately. This is the same
-      as a successful `vote-reset~`, but instant.
-    permission: Moderator
-    global_gate: '2m'
 - name: Voting
   commands:
   - name: 'yes'
@@ -287,6 +286,12 @@ categories:
       Be aware that there can be only one vote at a time and this command has a
       large per-user cooldown, so dont waste it.
     sender_gate: '5m'
+  - name: restart
+    doc: |
+      (Re)start the game immediately. This is the same as a successful
+      `vote-restart~`, but instant.
+    permission: Verified
+    global_gate: '2m'
   - name: vote-reset
     doc: |
       This allows to start a vote to restart the game and ***delete the world***,
@@ -298,6 +303,12 @@ categories:
       Be aware that there can be only one vote at a time and this command has a
       large per-user cooldown, so dont waste it.
     sender_gate: '5m'
+  - name: reset
+    doc: |
+      Reset the game (deleting the current world) immediately. This is the same
+      as a successful `vote-reset~`, but instant.
+    permission: Moderator
+    global_gate: '2m'
 permissions:
 - name: Caster
   description: Only the broadcaster can use this command.
