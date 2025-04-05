@@ -14,6 +14,8 @@ things ¯\\\_(ツ)_/¯
 The Twitch stream is/will be/was happening over at https://twitch.tv/necauqua
 :)
 
+Planned start date is Sunday, April 6, 2025, 16:00 EEST (8AM CT)
+
 ## Command structure
 You can send commands in the Twitch chat to make inputs to the game.
 
