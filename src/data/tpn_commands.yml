@@ -3,35 +3,38 @@ categories:
   commands:
   - name: up
     doc: |
-      Hold <kbd>W</kbd> for a duration of 1-500ms, defaulting to 500.
+      Hold <kbd>W</kbd> for a duration of 1-5000ms, defaulting to 500.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: left
     doc: |
-      Hold <kbd>A</kbd> for a duration of 1-500ms, defaulting to 500.
+      Hold <kbd>A</kbd> for a duration of 1-5000ms, defaulting to 500.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: down
     doc: |
-      Hold <kbd>S</kbd> for a duration of 1-500ms, defaulting to 500.
+      Hold <kbd>S</kbd> for a duration of 1-5000ms, defaulting to 500.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: right
     doc: |
-      Hold <kbd>D</kbd> for a duration of 1-500ms, defaulting to 500.
+      Hold <kbd>D</kbd> for a duration of 1-5000ms, defaulting to 500.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: interact
     doc: |
       Press <kbd>E</kbd>.
+  - name: kick
+    doc: |
+      Press <kbd>F</kbd>.
   - name: slot
     doc: |
       Press <kbd>1</kbd> through <kbd>8</kbd>.
@@ -114,7 +117,7 @@ categories:
       Click the right mouse button.
   - name: hold
     doc: |
-      Hold left mouse button down for a duration of 1-500ms, defaulting to 500.
+      Hold left mouse button down for a duration of 1-5000ms, defaulting to 500.
 
       An example of consistently dragging an item in your inventory:
       ```tpn
@@ -124,7 +127,7 @@ categories:
       little tomfoolery, but that will get you voted into the shadow realm.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: hotbar
     doc: |
@@ -180,12 +183,12 @@ categories:
     global_gate: '15s'
   - name: wait
     doc: |
-      Wait for a duration of 1-500ms, defaulting to 500.
+      Wait for a duration of 1-5000ms, defaulting to 500.
 
       Very useful for multi-command messages.
     args:
     - name: millis
-      doc: non-negative number, at most 500, optional
+      doc: non-negative number, at most 5000, optional
       optional: true
   - name: pause
     doc: |
