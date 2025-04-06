@@ -76,16 +76,28 @@ categories:
       optional: false
   - name: look-right
     doc: |
-      A shortcut for `look:0:500~`.
+      A shortcut for `look:500:0~`.
   - name: look-left
     doc: |
-      A shortcut for `look:0:-500~`.
+      A shortcut for `look:-500:0~`.
   - name: look-down
     doc: |
-      A shortcut for `look:500:0~`.
+      A shortcut for `look:0:500~`.
   - name: look-up
     doc: |
-      A shortcut for `look:-500:0~`.
+      A shortcut for `look:0:-500~`.
+  - name: look-up-right
+    doc: |
+      A shortcut for `look:500:-500~`.
+  - name: look-up-left
+    doc: |
+      A shortcut for `look:-500:-500~`.
+  - name: look-down-right
+    doc: |
+      A shortcut for `look:500:500~`.
+  - name: look-down-left
+    doc: |
+      A shortcut for `look:-500:500~`.
   - name: mouse
     doc: |
       Move the mouse to the absolute position on the screen.
