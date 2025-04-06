@@ -19,9 +19,6 @@ Planned start date is Sunday, April 6, 2025, 16:00 EEST (8AM CT)
 ## Command structure
 You can send commands in the Twitch chat to make inputs to the game.
 
-Messages from a single Twitch account are only processed once per 0.5 seconds
-in an attempt to slightly curtail spamming and botting, I might change that.
-
 A command looks like this:
 ```tpn
 any text command-name:arg1:arg2~ any other text, COGGERS
