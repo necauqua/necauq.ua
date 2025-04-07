@@ -90,6 +90,4 @@ parameters 😉
 
 You can also view the it separately [here](../../tpn).
 
-The question mark after the argument name means that it is optional.
-
 {{< tpn-commands >}}

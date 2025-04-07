@@ -12,6 +12,9 @@
     padding: 0.1rem 0.5rem;
     border-radius: 7px;
     background: #335;
+  }
+
+  .help {
     cursor: help;
   }
 
@@ -26,6 +29,11 @@
 {{ $perms = merge $perms (dict $perm.name $perm.description) }}
 {{ end }}
 
+<p>The question mark after the argument name means that it is optional.</p>
+<p>Shortcodes are alternative short names for certain commands.</p>
+<p>If there is a single numerical argument, the <code>:</code> symbol can be omitted, for example <code>slot3~</code>
+</p>
+
 {{ range .Site.Data.tpn_commands.categories }}
 <h3>{{ .name }}</h3>
 <ul>
@@ -39,7 +47,10 @@
       <span class="verb">{{ .name }}~</span>
       {{ end }}
       {{ if .permission }}
-      <span class="pill">>=<abbr title="{{ index $perms .permission }}">{{ .permission }}</abbr></span>
+      <span class="pill help">>=<abbr title="{{ index $perms .permission }}">{{ .permission }}</abbr></span>
+      {{ end }}
+      {{ if .shortcode }}
+      <span class="pill">shortcode: {{ .shortcode }}</span>
       {{ end }}
     </p>
     <p>{{ .doc | markdownify }}</p>

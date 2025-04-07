@@ -8,6 +8,7 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: u
   - name: left
     doc: |
       Hold <kbd>A</kbd> for a duration of 1-5000ms, defaulting to 500.
@@ -15,6 +16,7 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: l
   - name: down
     doc: |
       Hold <kbd>S</kbd> for a duration of 1-5000ms, defaulting to 500.
@@ -22,6 +24,7 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: d
   - name: right
     doc: |
       Hold <kbd>D</kbd> for a duration of 1-5000ms, defaulting to 500.
@@ -29,12 +32,14 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: r
   - name: interact
     doc: |
       Press <kbd>E</kbd>.
   - name: kick
     doc: |
       Press <kbd>F</kbd>.
+    shortcode: k
   - name: slot
     doc: |
       Press <kbd>1</kbd> through <kbd>8</kbd>.
@@ -42,6 +47,7 @@ categories:
     - name: slot
       doc: a number in range from 1 to 8
       optional: false
+    shortcode: s
   - name: open-inventory
     doc: |
       Press <kbd>Tab</kbd> _only if_ the inventory is closed.
@@ -50,11 +56,13 @@ categories:
       Also this command moves the mouse to the top left corner of the screen to
       force mouse movement after opening the inventory, since if you don't move
       it the game does not register hovering over slots lol.
+    shortcode: i
   - name: close-inventory
     doc: |
       Press <kbd>Tab</kbd> _only if_ the inventory is opened.
 
       This command also waits for the game inventory state to actually change.
+    shortcode: c
 - name: Mouse
   commands:
   - name: look
@@ -77,27 +85,35 @@ categories:
   - name: look-right
     doc: |
       A shortcut for `look:500:0~`.
+    shortcode: lr
   - name: look-left
     doc: |
       A shortcut for `look:-500:0~`.
+    shortcode: ll
   - name: look-down
     doc: |
       A shortcut for `look:0:500~`.
+    shortcode: ld
   - name: look-up
     doc: |
       A shortcut for `look:0:-500~`.
+    shortcode: lu
   - name: look-up-right
     doc: |
       A shortcut for `look:500:-500~`.
+    shortcode: lur
   - name: look-up-left
     doc: |
       A shortcut for `look:-500:-500~`.
+    shortcode: lul
   - name: look-down-right
     doc: |
       A shortcut for `look:500:500~`.
+    shortcode: ldr
   - name: look-down-left
     doc: |
       A shortcut for `look:-500:500~`.
+    shortcode: ldl
   - name: mouse
     doc: |
       Move the mouse to the absolute position on the screen.
@@ -121,9 +137,11 @@ categories:
     - name: dy
       doc: number
       optional: false
+    shortcode: mm
   - name: click
     doc: |
       Click the left mouse button.
+    shortcode: c
   - name: throw
     doc: |
       Click the right mouse button.
@@ -141,6 +159,7 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: h
   - name: hotbar
     doc: |
       A helper to move the mouse to the hotbar slot without you having to guess slot coordinates.
@@ -206,6 +225,7 @@ categories:
     - name: millis
       doc: non-negative number, at most 5000, optional
       optional: true
+    shortcode: w
   - name: pause
     doc: |
       Pause the game.
