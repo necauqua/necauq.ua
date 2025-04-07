@@ -74,7 +74,7 @@ up:100~ wait:400~ up:100~ wait:400~ up:100~ wait:400~ | right~ right~ right~
 > [!note]
 > As a general rule, commands that need or can wait for a variable amount of
 > time, so holding down keys, `wait~` etc, accept an optional argument for the
-> number of milliseconds with default (and maximum) usually being 500.
+> number of milliseconds with default usually being 500.
 
 Commands after the `|` start executing immediately, in parallel with the
 commands before it - so in this example you press <kbd>d</kbd> for 1.5 seconds,
