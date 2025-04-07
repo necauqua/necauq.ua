@@ -62,7 +62,7 @@ categories:
       Press <kbd>Tab</kbd> _only if_ the inventory is opened.
 
       This command also waits for the game inventory state to actually change.
-    shortcode: c
+    shortcode: x
 - name: Mouse
   commands:
   - name: look
