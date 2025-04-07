@@ -3,39 +3,40 @@ categories:
   commands:
   - name: up
     doc: |
-      Hold <kbd>W</kbd> for a duration of 1-5000ms, defaulting to 500.
+      Hold <kbd>W</kbd> for the specified duration of milliseconds (defaulting to 500).
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: u
   - name: left
     doc: |
-      Hold <kbd>A</kbd> for a duration of 1-5000ms, defaulting to 500.
+      Hold <kbd>A</kbd> for the specified duration of milliseconds (defaulting to 500).
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: l
   - name: down
     doc: |
-      Hold <kbd>S</kbd> for a duration of 1-5000ms, defaulting to 500.
+      Hold <kbd>S</kbd> for the specified duration of milliseconds (defaulting to 500).
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: d
   - name: right
     doc: |
-      Hold <kbd>D</kbd> for a duration of 1-5000ms, defaulting to 500.
+      Hold <kbd>D</kbd> for the specified duration of milliseconds (defaulting to 500).
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: r
   - name: interact
     doc: |
       Press <kbd>E</kbd>.
+    shortcode: i
   - name: kick
     doc: |
       Press <kbd>F</kbd>.
@@ -56,7 +57,7 @@ categories:
       Also this command moves the mouse to the top left corner of the screen to
       force mouse movement after opening the inventory, since if you don't move
       it the game does not register hovering over slots lol.
-    shortcode: i
+    shortcode: o
   - name: close-inventory
     doc: |
       Press <kbd>Tab</kbd> _only if_ the inventory is opened.
@@ -147,7 +148,7 @@ categories:
       Click the right mouse button.
   - name: hold
     doc: |
-      Hold left mouse button down for a duration of 1-5000ms, defaulting to 500.
+      Hold left mouse button down for the specified duration of milliseconds (defaulting to 500).
 
       An example of consistently dragging an item in your inventory:
       ```tpn
@@ -157,7 +158,7 @@ categories:
       little tomfoolery, but that will get you voted into the shadow realm.
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: h
   - name: hotbar
@@ -224,14 +225,20 @@ categories:
     global_gate: '30s'
   - name: wait
     doc: |
-      Wait for a duration of 1-5000ms, defaulting to 500.
+      Wait for a specified duration milliseconds.
 
       Very useful for multi-command messages.
     args:
     - name: millis
-      doc: non-negative number, at most 5000, optional
+      doc: non-negative number, at most 15000, optional
       optional: true
     shortcode: w
+  - name: interrupt
+    doc: |
+      Complete all current holds immediately.
+
+      "Holds" here are referring to all "non-instantaneous" commands that are
+      currently being executed **right now** - so movement, `hold~` and `wait~`.
   - name: pause
     doc: |
       Pause the game.
