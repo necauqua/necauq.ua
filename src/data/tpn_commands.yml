@@ -3,34 +3,34 @@ categories:
   commands:
   - name: up
     doc: |
-      Hold <kbd>W</kbd> for the specified duration of milliseconds (defaulting to 500).
+      Hold <kbd>W</kbd> for the specified duration.
     args:
-    - name: millis
-      doc: non-negative number, at most 15000, optional
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: u
   - name: left
     doc: |
-      Hold <kbd>A</kbd> for the specified duration of milliseconds (defaulting to 500).
+      Hold <kbd>A</kbd> for the specified duration.
     args:
-    - name: millis
-      doc: non-negative number, at most 15000, optional
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: l
   - name: down
     doc: |
-      Hold <kbd>S</kbd> for the specified duration of milliseconds (defaulting to 500).
+      Hold <kbd>S</kbd> for the specified duration.
     args:
-    - name: millis
-      doc: non-negative number, at most 15000, optional
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: d
   - name: right
     doc: |
-      Hold <kbd>D</kbd> for the specified duration of milliseconds (defaulting to 500).
+      Hold <kbd>D</kbd> for the specified duration.
     args:
-    - name: millis
-      doc: non-negative number, at most 15000, optional
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: r
   - name: interact
@@ -158,7 +158,7 @@ categories:
       little tomfoolery, but that will get you voted into the shadow realm.
     args:
     - name: millis
-      doc: non-negative number, at most 15000, optional
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: h
   - name: hotbar
@@ -229,8 +229,8 @@ categories:
 
       Very useful for multi-command messages.
     args:
-    - name: millis
-      doc: non-negative number, at most 15000, optional
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: w
   - name: interrupt
