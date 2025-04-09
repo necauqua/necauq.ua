@@ -64,6 +64,105 @@ categories:
 
       This command also waits for the game inventory state to actually change.
     shortcode: x
+- name: Macros
+  commands:
+  - name: macro-record
+    doc: |
+      Stores a string as a personal macro.
+
+      Note that macros **cannot** call other macros! This will fail if you try.
+
+      Commands can accept complicated strings if you put them in quotes like so:
+      ```tpn
+      macro-record:hop:"wait~ up~ wait~ up~ wait~ up~ wait~ up~"~
+      ```
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: script
+      doc: string
+      optional: false
+  - name: macro-delete
+    doc: |
+      Deletes a macro created with `macro-record~`.
+    args:
+    - name: name
+      doc: string
+      optional: false
+  - name: global-macro-record
+    doc: |
+      Stores a string as a global macro, meaning it can be used by everyone.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: script
+      doc: string
+      optional: false
+    permission: Moderator
+  - name: global-macro-delete
+    doc: |
+      Deletes a macro created with `global-macro-record~`.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    permission: Moderator
+  - name: macro-print
+    doc: |
+      Replies with the stored macro.
+
+      Can peek at other users macros if their login is specified, they're all
+      public here.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: login
+      doc: string, optional
+      optional: true
+    sender_gate: '15s'
+  - name: yoink
+    doc: |
+      Copy someones macro to yourself.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    - name: name
+      doc: string
+      optional: false
+    - name: rename
+      doc: string, optional
+      optional: true
+  - name: macro
+    doc: |
+      Run the macro.
+
+      Note that errors in the macro string are lost, `last-error~`
+      will only know that an error happened.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    shortcode: q
+  - name: repeat
+    doc: |
+      Execute a given string several times.
+
+      ```tpn
+      jump five times repeat:5:"wait~ up~"~
+      ```
+
+      Like macros, repeats cannot contain other repeats.
+    args:
+    - name: times
+      doc: a number in range from 2 to 15
+      optional: false
+    - name: script
+      doc: string
+      optional: false
 - name: Mouse
   commands:
   - name: look
