@@ -64,6 +64,16 @@ categories:
 
       This command also waits for the game inventory state to actually change.
     shortcode: x
+  - name: pause
+    doc: |
+      Pause the game.
+
+      This actually just presses the <kbd>Esc</kbd> key.
+
+      And yes, chatters will be able to move the mouse around and click stuff, so
+      this command is kinda annoying without `full-stop~` as they could mess up
+      the settings or start a different gamemode.
+    permission: Moderator
 - name: Macros
   commands:
   - name: macro-record
@@ -83,6 +93,7 @@ categories:
     - name: script
       doc: string
       optional: false
+    shortcode: mr
   - name: macro-delete
     doc: |
       Deletes a macro created with `macro-record~`.
@@ -90,6 +101,7 @@ categories:
     - name: name
       doc: string
       optional: false
+    shortcode: md
   - name: global-macro-record
     doc: |
       Stores a string as a global macro, meaning it can be used by everyone.
@@ -101,6 +113,7 @@ categories:
       doc: string
       optional: false
     permission: Moderator
+    shortcode: gmr
   - name: global-macro-delete
     doc: |
       Deletes a macro created with `global-macro-record~`.
@@ -109,6 +122,7 @@ categories:
       doc: string
       optional: false
     permission: Moderator
+    shortcode: gmd
   - name: macro-print
     doc: |
       Replies with the stored macro.
@@ -122,7 +136,15 @@ categories:
     - name: login
       doc: string, optional
       optional: true
-    sender_gate: '15s'
+    sender_gate: '5s'
+  - name: macro-list
+    doc: |
+      List macros you/given chatter has recorded.
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
+    sender_gate: '5s'
   - name: yoink
     doc: |
       Copy someones macro to yourself.
@@ -152,10 +174,19 @@ categories:
       Execute a given string several times.
 
       ```tpn
-      jump five times repeat:5:"wait~ up~"~
+      jump five times: repeat:5:" wait~ up~ "~
       ```
 
-      Like macros, repeats cannot contain other repeats.
+      Repeats do count towards the recursion limit.
+
+      The total limit of repetitions in a given message is 15!
+      So you can do something like
+      ```tpn
+      repeat:15:" repeat:15:\" wait~ | up~ \" "~
+      ```
+      And it will only run 15 times and the error out.
+
+      Like with macros, errors in the evaluated string are lost.
     args:
     - name: times
       doc: a number in range from 2 to 15
@@ -163,6 +194,36 @@ categories:
     - name: script
       doc: string
       optional: false
+  - name: group
+    doc: |
+      Executes a given string, identical to what `repeat:1:"script"` could've
+      been if a singular repeat was allowed.
+
+      Does not count towards recursion or repeat limits.
+
+      This is useful to group together parallel actions, for example:
+      ```tpn
+      wait:5s~ group:" up~ | left~ "~
+      ```
+
+      Like with macros, errors in the evaluated string are lost.
+    args:
+    - name: script
+      doc: string
+      optional: false
+    shortcode: g
+  - name: lock
+    doc: |
+      Similarly to `group`, executes a given string without counting towards
+      limits.
+
+      The difference is that only one `lock` script can run at a time, if
+      one is already running this command does nothing.
+    args:
+    - name: script
+      doc: string
+      optional: false
+    shortcode: b
 - name: Mouse
   commands:
   - name: look
@@ -177,10 +238,10 @@ categories:
       Minä.
     args:
     - name: dx
-      doc: number
+      doc: a number
       optional: false
     - name: dy
-      doc: number
+      doc: a number
       optional: false
   - name: look-right
     doc: |
@@ -222,20 +283,20 @@ categories:
       so `mouse:0:0~` will move the mouse to the center of the screen.
     args:
     - name: x
-      doc: number
+      doc: a number
       optional: false
     - name: 'y'
-      doc: number
+      doc: a number
       optional: false
   - name: mouse-move
     doc: |
       Move the mouse relative to its current position.
     args:
     - name: dx
-      doc: number
+      doc: a number
       optional: false
     - name: dy
-      doc: number
+      doc: a number
       optional: false
     shortcode: mm
   - name: click
@@ -307,7 +368,7 @@ categories:
       Last error message is set when you run invalid commands, or if the command
       execution managed to crash somehow. In the latter case, you'll be given the
       message id - please send it to me to look at logs and fix the issue.
-    sender_gate: '15s'
+    sender_gate: '3s'
   - name: seed
     doc: |
       Get the current seed (surely you are not planning to look at noitool, right?)
@@ -322,6 +383,12 @@ categories:
 
       Try running this first before doing a full restart etc etc.
     global_gate: '30s'
+  - name: fix-obs-sound
+    doc: |
+      The sound setup is the most brittle jank thing actually, and dies most often.
+
+      Try running this first before doing a full restart etc etc.
+    global_gate: '30s'
   - name: wait
     doc: |
       Wait for a specified duration milliseconds.
@@ -332,22 +399,19 @@ categories:
       doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
       optional: true
     shortcode: w
-  - name: interrupt
+  - name: break
     doc: |
       Complete all current holds immediately.
 
       "Holds" here are referring to all "non-instantaneous" commands that are
       currently being executed **right now** - so movement, `hold~` and `wait~`.
-  - name: pause
+
+      This is kind of a niche thing, most likely you need `interrupt~`.
+  - name: interrupt
     doc: |
-      Pause the game.
-
-      This actually just presses the <kbd>Esc</kbd> key.
-
-      And yes, chatters will be able to move the mouse around and click stuff, so
-      this command is kinda annoying without `full-stop~` as they could mess up
-      the settings or start a different gamemode.
-    permission: Moderator
+      Stop running all current commands.
+      This is similar to `break~`, except the commands following the holds that
+      get completed do not run.
   - name: full-stop
     doc: |
       Stop processing commands from everyone below the moderator level.
