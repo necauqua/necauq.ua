@@ -164,6 +164,8 @@ categories:
 
       Note that errors in the macro string are lost, `last-error~`
       will only know that an error happened.
+
+      Macros can call other macros, but there is a recursion limit!
     args:
     - name: name
       doc: string
@@ -176,8 +178,6 @@ categories:
       ```tpn
       jump five times: repeat:5:" wait~ up~ "~
       ```
-
-      Repeats do count towards the recursion limit.
 
       The total limit of repetitions in a given message is 15!
       So you can do something like
@@ -199,18 +199,22 @@ categories:
       Executes a given string, identical to what `repeat:1:"script"` could've
       been if a singular repeat was allowed.
 
-      Does not count towards recursion or repeat limits.
-
       This is useful to group together parallel actions, for example:
       ```tpn
       wait:5s~ group:" up~ | left~ "~
       ```
 
       Like with macros, errors in the evaluated string are lost.
+
+      Additionally, there is an optional name that you can attach to the group to
+      have it shown on the status wall.
     args:
     - name: script
       doc: string
       optional: false
+    - name: custom_status_name
+      doc: string, optional
+      optional: true
     shortcode: g
   - name: lock
     doc: |
