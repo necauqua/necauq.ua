@@ -137,6 +137,7 @@ categories:
       doc: string, optional
       optional: true
     sender_gate: '5s'
+    shortcode: mp
   - name: macro-list
     doc: |
       List macros you/given chatter has recorded.
@@ -145,6 +146,7 @@ categories:
       doc: string, optional
       optional: true
     sender_gate: '5s'
+    shortcode: ml
   - name: yoink
     doc: |
       Copy someones macro to yourself.
@@ -292,6 +294,7 @@ categories:
     - name: 'y'
       doc: a number
       optional: false
+    shortcode: m
   - name: mouse-move
     doc: |
       Move the mouse relative to its current position.
