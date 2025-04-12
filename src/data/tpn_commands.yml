@@ -181,12 +181,9 @@ categories:
       jump five times: repeat:5:" wait~ up~ "~
       ```
 
-      The total limit of repetitions in a given message is 15!
-      So you can do something like
-      ```tpn
-      repeat:15:" repeat:15:\" wait~ | up~ \" "~
-      ```
-      And it will only run 15 times and the error out.
+      The total limit of repetitions in a given message is 1000! This counts all
+      repetitions, nested or inside of macros etc. Once the limit is reached, the
+      command will error out.
 
       Like with macros, errors in the evaluated string are lost.
     args:
