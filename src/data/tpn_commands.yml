@@ -138,6 +138,15 @@ categories:
       optional: true
     sender_gate: '5s'
     shortcode: mp
+  - name: global-macro-print
+    doc: |
+      Replies with the stored global macro.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    sender_gate: '5s'
+    shortcode: gmp
   - name: macro-list
     doc: |
       List macros you/given chatter has recorded.
@@ -147,6 +156,11 @@ categories:
       optional: true
     sender_gate: '5s'
     shortcode: ml
+  - name: global-macro-list
+    doc: |
+      List global macros recorded.
+    sender_gate: '5s'
+    shortcode: gml
   - name: yoink
     doc: |
       Copy someones macro to yourself.
