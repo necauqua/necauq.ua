@@ -80,8 +80,6 @@ categories:
     doc: |
       Stores a string as a personal macro.
 
-      Note that macros **cannot** call other macros! This will fail if you try.
-
       Commands can accept complicated strings if you put them in quotes like so:
       ```tpn
       macro-record:hop:"wait~ up~ wait~ up~ wait~ up~ wait~ up~"~
@@ -178,14 +176,17 @@ categories:
     doc: |
       Run the macro.
 
-      Note that errors in the macro string are lost, `last-error~`
-      will only know that an error happened.
-
       Macros can call other macros, but there is a recursion limit!
+
+      Also you can run a macro recorded by someone else by appending their login
+      as the third argument.
     args:
     - name: name
       doc: string
       optional: false
+    - name: login
+      doc: string, optional
+      optional: true
     shortcode: q
   - name: repeat
     doc: |
@@ -198,8 +199,6 @@ categories:
       The total limit of repetitions in a given message is 1000! This counts all
       repetitions, nested or inside of macros etc. Once the limit is reached, the
       command will error out.
-
-      Like with macros, errors in the evaluated string are lost.
     args:
     - name: times
       doc: a number in range from 2 to 15
@@ -216,8 +215,6 @@ categories:
       ```tpn
       wait:5s~ group:" up~ | left~ "~
       ```
-
-      Like with macros, errors in the evaluated string are lost.
 
       Additionally, there is an optional name that you can attach to the group to
       have it shown on the status wall.
