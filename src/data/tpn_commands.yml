@@ -368,14 +368,18 @@ categories:
       I heard that scarcity creates value, so getting a pong is very _cool_ and
       _pog_, because only one person can get it in an hour.
     global_gate: '1h'
-  - name: info
+  - name: echo
     doc: |
-      Show the command instruction link.
-    global_gate: '15s'
-  - name: discord
-    doc: |
-      Show the discord server link.
-    global_gate: '15s'
+      A building block for basic static text commands.
+
+      This just makes the bot print the given text, but non-moderators can only call it through global macros.
+
+      So you can call a global macro `discord~` which will resolve to `echo:"discord link etc"~` and print it.
+    args:
+    - name: text
+      doc: string
+      optional: false
+    sender_gate: '5s'
   - name: last-error
     doc: |
       Respond with the last error message for user.
@@ -383,6 +387,10 @@ categories:
       Last error message is set when you run invalid commands, or if the command
       execution managed to crash somehow. In the latter case, you'll be given the
       message id - please send it to me to look at logs and fix the issue.
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
     sender_gate: '3s'
   - name: seed
     doc: |
