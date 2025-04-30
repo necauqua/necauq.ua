@@ -463,7 +463,7 @@ categories:
       doc: string
       optional: false
     permission: TwitchStaff
-  - name: pull-out
+  - name: unbanish
     doc: |
       Restore users ability to use the bot, bringing them back from the shadow
       realm regardless of their crimes.
@@ -472,17 +472,13 @@ categories:
       doc: string
       optional: false
     permission: Moderator
-  - name: shadowbanned
+  - name: banished
     doc: |
       Check if a user was yeeted into the shadow realm. Per-user 15 second
       cooldown.
 
-      The user will or will not return depending on if it was their first
-      offence, and if they dipped their toes in the shadow realm previously then
-      they're on thin ice.
-
-      If _you_ are yeeted currently (or forever), the bot ignores you utterly, so
-      this won't work ¯\\\_(ツ)_/¯.
+      If _you_ are yeeted, the bot ignores you utterly, so this won't work
+      ¯\\\_(ツ)_/¯.
     args:
     - name: login
       doc: string
