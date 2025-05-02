@@ -238,6 +238,28 @@ categories:
       doc: string
       optional: false
     shortcode: b
+  - name: loop
+    doc: |
+      Repeatedly execute a given script indefinitely - until an interrupt is
+      sent.
+
+      A special condition: a single loop iteration must take at least 100ms,
+      otherwise after the first iteration the command will error out.
+
+      Unless you have a repeat _inside_ of the loop that exceeds it, the loop is
+      not limited by the repeat limit.
+
+      The only way to stop a running loop is `interrupt~`, and putting a loop
+      looinside of a loop is obviously pointless.
+
+      ```tpn
+      stalling: repeat:5:" wait~ up~ "~
+      ```
+    args:
+    - name: script
+      doc: string
+      optional: false
+    permission: Subscriber
 - name: Mouse
   commands:
   - name: look
@@ -327,6 +349,45 @@ categories:
     - name: slot
       doc: a number in range from 1 to 26
       optional: false
+- name: Stats
+  commands:
+  - name: stat
+    doc: |
+      Count the amount of messages typed by a chatter.
+
+      If given a word, counts the messages containing it (given string can give
+      multiple words separated by spaces).
+
+      Login defaults to the sender (you can do `stat::word~` too).
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
+    - name: word
+      doc: string, optional
+      optional: true
+    sender_gate: '3s'
+  - name: stat-global
+    doc: |
+      Similar to `stat` except works across all of chat.
+
+      Without an argument counts all messages ever typed in chat since I started
+      archiving it (which is way before the Twitch Plays Noita happened).
+
+      With an argument filters messages by the given word(s), just like `stat`.
+    args:
+    - name: word
+      doc: string, optional
+      optional: true
+    sender_gate: '3s'
+  - name: first-message
+    doc: |
+      Get the first message sent by a user (or you) in chat.
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
+    sender_gate: '3s'
 - name: Util
   commands:
   - name: ping
