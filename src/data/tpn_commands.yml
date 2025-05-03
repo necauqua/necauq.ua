@@ -250,7 +250,7 @@ categories:
       not limited by the repeat limit.
 
       The only way to stop a running loop is `interrupt~`, and putting a loop
-      looinside of a loop is obviously pointless.
+      inside of a loop is obviously pointless.
 
       ```tpn
       stalling: repeat:5:" wait~ up~ "~
@@ -482,6 +482,12 @@ categories:
       doc: string
       optional: false
     permission: Moderator
+  - name: noita-cpu-usage
+    doc: |
+      Gets the current CPU usage of the game.
+    permission: Subscriber
+    global_gate: '5s'
+    shortcode: cpu
 - name: Voting
   commands:
   - name: 'yes'
@@ -518,7 +524,7 @@ categories:
     sender_gate: '5m'
   - name: banish
     doc: |
-      Instantly banish a user to the shadow realm. Thin ice rule applies.
+      Instantly banish a user to the shadow realm.
     args:
     - name: login
       doc: string
