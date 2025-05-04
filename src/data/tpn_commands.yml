@@ -388,6 +388,10 @@ categories:
       doc: string, optional
       optional: true
     sender_gate: '3s'
+  - name: balance
+    doc: |
+      Get the bless/curse balance for the current run
+    sender_gate: '3s'
 - name: Util
   commands:
   - name: ping
