@@ -91,6 +91,9 @@ categories:
     - name: script
       doc: string
       optional: false
+    - name: ignore_errors
+      doc: a literal string 'ignore', optional
+      optional: true
     shortcode: mr
   - name: macro-delete
     doc: |
@@ -163,10 +166,10 @@ categories:
     doc: |
       Copy someones macro to yourself.
     args:
-    - name: login
+    - name: name
       doc: string
       optional: false
-    - name: name
+    - name: login
       doc: string
       optional: false
     - name: rename
@@ -187,6 +190,9 @@ categories:
     - name: login
       doc: string, optional
       optional: true
+    - name: rest
+      doc: the rest of the arguments
+      optional: false
     shortcode: q
   - name: repeat
     doc: |
@@ -260,6 +266,37 @@ categories:
       doc: string
       optional: false
     permission: Subscriber
+- name: Moderation
+  commands:
+  - name: banish
+    doc: |
+      Instantly banish a user to the shadow realm.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    permission: TwitchStaff
+  - name: unbanish
+    doc: |
+      Restore users ability to use the bot, bringing them back from the shadow
+      realm regardless of their crimes.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    permission: Moderator
+  - name: banished
+    doc: |
+      Check if a user was yeeted into the shadow realm. Per-user 15 second
+      cooldown.
+
+      If _you_ are yeeted, the bot ignores you utterly, so this won't work
+      ¯\\\_(ツ)_/¯.
+    args:
+    - name: login
+      doc: string
+      optional: false
+    sender_gate: '15s'
 - name: Mouse
   commands:
   - name: look
@@ -526,35 +563,6 @@ categories:
       doc: string
       optional: false
     sender_gate: '5m'
-  - name: banish
-    doc: |
-      Instantly banish a user to the shadow realm.
-    args:
-    - name: login
-      doc: string
-      optional: false
-    permission: TwitchStaff
-  - name: unbanish
-    doc: |
-      Restore users ability to use the bot, bringing them back from the shadow
-      realm regardless of their crimes.
-    args:
-    - name: login
-      doc: string
-      optional: false
-    permission: Moderator
-  - name: banished
-    doc: |
-      Check if a user was yeeted into the shadow realm. Per-user 15 second
-      cooldown.
-
-      If _you_ are yeeted, the bot ignores you utterly, so this won't work
-      ¯\\\_(ツ)_/¯.
-    args:
-    - name: login
-      doc: string
-      optional: false
-    sender_gate: '15s'
   - name: vote-restart
     doc: |
       This allows to start a vote to restart the game in case it crashed or got
