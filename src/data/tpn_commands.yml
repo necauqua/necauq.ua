@@ -91,9 +91,6 @@ categories:
     - name: script
       doc: string
       optional: false
-    - name: ignore_errors
-      doc: a literal string 'ignore', optional
-      optional: true
     shortcode: mr
   - name: macro-delete
     doc: |
@@ -203,11 +200,11 @@ categories:
       ```
 
       The total limit of repetitions in a given message is 1000! This counts all
-      repetitions, nested or inside of macros etc. Once the limit is reached, the
-      command will error out.
+      repetitions, nested in each other or inside of macros etc etc. Once the
+      limit is reached, the command will error out.
     args:
     - name: times
-      doc: a number in range from 2 to 15
+      doc: a number in range from 0 to 1000
       optional: false
     - name: script
       doc: string
@@ -232,6 +229,18 @@ categories:
       doc: string, optional
       optional: true
     shortcode: g
+  - name: try
+    doc: |
+      Similarly to `group`, executes a given string without counting towards
+      limits.
+
+      The difference is that any script errors are ignored, and this command
+      always succeeds, without preventing the repeats from continuing or setting
+      last-error.
+    args:
+    - name: script
+      doc: string
+      optional: false
   - name: lock
     doc: |
       Similarly to `group`, executes a given string without counting towards
@@ -425,6 +434,22 @@ categories:
       doc: string, optional
       optional: true
     sender_gate: '3s'
+  - name: last-message
+    doc: |
+      Get the last message sent by a user (or you) in chat.
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
+    sender_gate: '3s'
+  - name: top
+    doc: |
+      Get a list of top-N chatters of all time, by number of sent messages.
+    args:
+    - name: 'n'
+      doc: a number in range from 1 to 15, optional
+      optional: true
+    sender_gate: '3s'
   - name: balance
     doc: |
       Get the bless/curse balance for the current run
@@ -464,15 +489,27 @@ categories:
     sender_gate: '3s'
   - name: seed
     doc: |
-      Get the current seed (surely you are not planning to look at noitool, right?)
-
-      At the moment only replies with actual seed to moderators 🤷
+      Read the current seed
+    permission: Moderator
     global_gate: '15s'
   - name: death-count
     doc: |
-      Get the current death count
+      Read the current death count
     global_gate: '15s'
     shortcode: deaths
+  - name: perks
+    doc: |
+      Read the currently picked up perks. Look ma, streamer wands at home!
+    args:
+    - name: top_n
+      doc: a non-negative number, optional
+      optional: true
+    global_gate: '5s'
+  - name: damage-multipliers
+    doc: |
+      Read the current non-1 damage multipliers of the player entity.
+    permission: Vip
+    global_gate: '5s'
   - name: fix-obs-capture
     doc: |
       Sometimes the capture dies (but the game is fine) because of my brittle scripts.
