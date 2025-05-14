@@ -1,4 +1,57 @@
 categories:
+- name: Data
+  commands:
+  - name: seed
+    doc: |
+      Read the current seed
+    permission: Vip
+    global_gate: '15s'
+  - name: death-count
+    doc: |
+      Read the current death count
+    global_gate: '15s'
+    shortcode: deaths
+  - name: perks
+    doc: |
+      Read the currently picked up perks. Look ma, streamer wands at home!
+    args:
+    - name: top_n
+      doc: a non-negative number, optional
+      optional: true
+    global_gate: '5s'
+  - name: damage-multipliers
+    doc: |
+      Read the current non-1 damage multipliers of the player entity.
+    permission: Vip
+    global_gate: '5s'
+  - name: check-flag
+    doc: |
+      Checks if the persistent flag was set in the running save.
+    args:
+    - name: flag
+      doc: string
+      optional: false
+    global_gate: '5s'
+  - name: pillar-progress
+    doc: |
+      Shows the amount of completed pillars vs total.
+    global_gate: '5s'
+  - name: pillar-todo
+    doc: |
+      Shows all the pillar achievements not yet completed in the running save.
+    args:
+    - name: top_n
+      doc: a non-negative number, optional
+      optional: true
+    global_gate: '5s'
+  - name: pillar-done
+    doc: |
+      Shows all the pillar achievements already completed in the running save.
+    args:
+    - name: top_n
+      doc: a non-negative number, optional
+      optional: true
+    global_gate: '5s'
 - name: Keys
   commands:
   - name: up
@@ -275,6 +328,47 @@ categories:
       doc: string
       optional: false
     permission: Subscriber
+  - name: math
+    doc: |
+      Evaluates and prints a given math expression. Mostly useful for debugging
+      my calculator bugs :(
+    args:
+    - name: value
+      doc: a number
+      optional: false
+    sender_gate: '3s'
+  - name: set
+    doc: |
+      Stores a personal named number that will be replaced in any commands you
+      call (including macros) if you reference it as `%(name)`.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: value
+      doc: a number
+      optional: false
+  - name: set-text
+    doc: |
+      Stores a personal named value that will be replaced in any commands you
+      call (including macros) if you reference it as `%(name)`.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: value
+      doc: string
+      optional: false
+  - name: del
+    doc: |
+      Deletes a personal named value. Can delete more than one at once.
+    args:
+    - name: names
+      doc: the rest of the arguments
+      optional: false
+  - name: clear
+    doc: |
+      Clears all of your personal named values.
 - name: Moderation
   commands:
   - name: banish
@@ -355,6 +449,9 @@ categories:
     - name: dy
       doc: a number
       optional: false
+    - name: duration
+      doc: duration in milliseconds, at most 15000, defaults to 0. You can also specify whole seconds by appending 's'
+      optional: true
     shortcode: mm
   - name: click
     doc: |
@@ -487,29 +584,6 @@ categories:
       doc: string, optional
       optional: true
     sender_gate: '3s'
-  - name: seed
-    doc: |
-      Read the current seed
-    permission: Moderator
-    global_gate: '15s'
-  - name: death-count
-    doc: |
-      Read the current death count
-    global_gate: '15s'
-    shortcode: deaths
-  - name: perks
-    doc: |
-      Read the currently picked up perks. Look ma, streamer wands at home!
-    args:
-    - name: top_n
-      doc: a non-negative number, optional
-      optional: true
-    global_gate: '5s'
-  - name: damage-multipliers
-    doc: |
-      Read the current non-1 damage multipliers of the player entity.
-    permission: Vip
-    global_gate: '5s'
   - name: fix-obs-capture
     doc: |
       Sometimes the capture dies (but the game is fine) because of my brittle scripts.
