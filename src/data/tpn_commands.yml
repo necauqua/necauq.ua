@@ -546,7 +546,15 @@ categories:
     - name: 'n'
       doc: a number in range from 1 to 15, optional
       optional: true
-    sender_gate: '3s'
+    sender_gate: '10m'
+  - name: rank
+    doc: |
+      Get the place of the chatter (or you) in the "leaderboard" of how many messages they ~~spammed~~ sent
+    args:
+    - name: login
+      doc: string, optional
+      optional: true
+    sender_gate: '1m'
   - name: balance
     doc: |
       Get the bless/curse balance for the current run
