@@ -11,6 +11,10 @@ categories:
       Read the current death count
     global_gate: '15s'
     shortcode: deaths
+  - name: kicks
+    doc: |
+      The amount of kicks registered by the game in the current run
+    global_gate: '15s'
   - name: perks
     doc: |
       Read the currently picked up perks. Look ma, streamer wands at home!
@@ -589,7 +593,7 @@ categories:
       message id - please send it to me to look at logs and fix the issue.
     args:
     - name: login
-      doc: string, optional
+      doc: an optional user login. Defaults to you
       optional: true
     sender_gate: '3s'
   - name: fix-obs-capture
