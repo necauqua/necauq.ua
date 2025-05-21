@@ -19,8 +19,8 @@ categories:
     doc: |
       Read the currently picked up perks. Look ma, streamer wands at home!
     args:
-    - name: top_n
-      doc: a non-negative number, optional
+    - name: top-n
+      doc: a non-negative number
       optional: true
     global_gate: '5s'
   - name: damage-multipliers
@@ -44,16 +44,16 @@ categories:
     doc: |
       Shows all the pillar achievements not yet completed in the running save.
     args:
-    - name: top_n
-      doc: a non-negative number, optional
+    - name: top-n
+      doc: a non-negative number
       optional: true
     global_gate: '5s'
   - name: pillar-done
     doc: |
       Shows all the pillar achievements already completed in the running save.
     args:
-    - name: top_n
-      doc: a non-negative number, optional
+    - name: top-n
+      doc: a non-negative number
       optional: true
     global_gate: '5s'
 - name: Keys
@@ -146,7 +146,7 @@ categories:
       doc: string
       optional: false
     - name: script
-      doc: string
+      doc: a script string, will not have it's vars expanded
       optional: false
     shortcode: mr
   - name: macro-delete
@@ -165,7 +165,7 @@ categories:
       doc: string
       optional: false
     - name: script
-      doc: string
+      doc: a script string, will not have it's vars expanded
       optional: false
     permission: Moderator
     shortcode: gmr
@@ -188,8 +188,8 @@ categories:
     - name: name
       doc: string
       optional: false
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '5s'
     shortcode: mp
@@ -206,8 +206,8 @@ categories:
     doc: |
       List macros you/given chatter has recorded.
     args:
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '5s'
     shortcode: ml
@@ -223,11 +223,11 @@ categories:
     - name: name
       doc: string
       optional: false
-    - name: login
-      doc: string
-      optional: false
+    - name: chatter
+      doc: a user login, defaults to you
+      optional: true
     - name: rename
-      doc: string, optional
+      doc: string
       optional: true
   - name: macro
     doc: |
@@ -241,8 +241,8 @@ categories:
     - name: name
       doc: string
       optional: false
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     - name: rest
       doc: the rest of the arguments
@@ -264,12 +264,11 @@ categories:
       doc: a number in range from 0 to 1000
       optional: false
     - name: script
-      doc: string
+      doc: a script string, will not have it's vars expanded
       optional: false
   - name: group
     doc: |
-      Executes a given string, identical to what `repeat:1:"script"` could've
-      been if a singular repeat was allowed.
+      Executes a given string, basically identical to `repeat:1:"script"`.
 
       This is useful to group together parallel actions, for example:
       ```tpn
@@ -280,10 +279,10 @@ categories:
       have it shown on the status wall.
     args:
     - name: script
-      doc: string
+      doc: a script string
       optional: false
-    - name: custom_status_name
-      doc: string, optional
+    - name: custom-status-name
+      doc: string
       optional: true
     shortcode: g
   - name: try
@@ -296,7 +295,7 @@ categories:
       last-error.
     args:
     - name: script
-      doc: string
+      doc: a script string
       optional: false
   - name: lock
     doc: |
@@ -307,7 +306,7 @@ categories:
       one is already running this command does nothing.
     args:
     - name: script
-      doc: string
+      doc: a script string
       optional: false
     shortcode: b
   - name: loop
@@ -329,7 +328,7 @@ categories:
       ```
     args:
     - name: script
-      doc: string
+      doc: a script string, will not have it's vars expanded
       optional: false
     permission: Subscriber
   - name: math
@@ -344,7 +343,7 @@ categories:
   - name: set
     doc: |
       Stores a personal named number that will be replaced in any commands you
-      call (including macros) if you reference it as `%(name)`.
+      call (including macros) if you reference it as `%name`.
     args:
     - name: name
       doc: string
@@ -355,7 +354,7 @@ categories:
   - name: set-text
     doc: |
       Stores a personal named value that will be replaced in any commands you
-      call (including macros) if you reference it as `%(name)`.
+      call (including macros) if you reference it as `%name`.
     args:
     - name: name
       doc: string
@@ -370,6 +369,10 @@ categories:
     - name: names
       doc: the rest of the arguments
       optional: false
+  - name: list-vars
+    doc: |
+      Lists all of your personal named values.
+    sender_gate: '5s'
   - name: clear
     doc: |
       Clears all of your personal named values.
@@ -379,8 +382,8 @@ categories:
     doc: |
       Instantly banish a user to the shadow realm.
     args:
-    - name: login
-      doc: string
+    - name: chatter
+      doc: a user login
       optional: false
     permission: TwitchStaff
   - name: unbanish
@@ -388,22 +391,33 @@ categories:
       Restore users ability to use the bot, bringing them back from the shadow
       realm regardless of their crimes.
     args:
-    - name: login
-      doc: string
+    - name: chatter
+      doc: a user login
       optional: false
     permission: Moderator
   - name: banished
     doc: |
-      Check if a user was yeeted into the shadow realm. Per-user 15 second
-      cooldown.
+      Check if a user was yeeted into the shadow realm.
 
       If _you_ are yeeted, the bot ignores you utterly, so this won't work
       ¯\\\_(ツ)_/¯.
     args:
-    - name: login
-      doc: string
+    - name: chatter
+      doc: a user login
       optional: false
     sender_gate: '15s'
+  - name: obs-restart-stream
+    doc: |
+      Stops and then starts the stream again, useful for when Twitch kills the
+      stream due to the 48h limit and OBS does not realize.
+    permission: Moderator
+    global_gate: '5m'
+  - name: obs-revive
+    doc: |
+      An untested script that starts OBS and then starts the stream if OBS died.
+      Does nothing if the OBS process is running.
+    permission: Moderator
+    global_gate: '5m'
 - name: Mouse
   commands:
   - name: look
@@ -507,11 +521,11 @@ categories:
 
       Login defaults to the sender (you can do `stat::word~` too).
     args:
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     - name: word
-      doc: string, optional
+      doc: string
       optional: true
     sender_gate: '3s'
   - name: stat-global
@@ -524,23 +538,23 @@ categories:
       With an argument filters messages by the given word(s), just like `stat`.
     args:
     - name: word
-      doc: string, optional
+      doc: string
       optional: true
     sender_gate: '3s'
   - name: first-message
     doc: |
       Get the first message sent by a user (or you) in chat.
     args:
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
   - name: last-message
     doc: |
       Get the last message sent by a user (or you) in chat.
     args:
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
   - name: top
@@ -548,15 +562,15 @@ categories:
       Get a list of top-N chatters of all time, by number of sent messages.
     args:
     - name: 'n'
-      doc: a number in range from 1 to 15, optional
+      doc: a number in range from 1 to 15
       optional: true
     sender_gate: '10m'
   - name: rank
     doc: |
       Get the place of the chatter (or you) in the "leaderboard" of how many messages they ~~spammed~~ sent
     args:
-    - name: login
-      doc: string, optional
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '1m'
   - name: balance
@@ -592,8 +606,8 @@ categories:
       execution managed to crash somehow. In the latter case, you'll be given the
       message id - please send it to me to look at logs and fix the issue.
     args:
-    - name: login
-      doc: an optional user login. Defaults to you
+    - name: chatter
+      doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
   - name: fix-obs-capture
@@ -608,6 +622,10 @@ categories:
 
       Try running this first before doing a full restart etc etc.
     global_gate: '30s'
+  - name: is-game-running
+    doc: |
+      Check if noita.exe process is present, aka not dead.
+    sender_gate: '1m'
   - name: wait
     doc: |
       Wait for a specified duration milliseconds.
@@ -651,7 +669,14 @@ categories:
       Gets the current CPU usage of the game.
     permission: Subscriber
     global_gate: '5s'
+    sender_gate: '1m'
     shortcode: cpu
+  - name: cpu-total
+    doc: |
+      Gets the current CPU usage of my entire PC.
+    permission: Subscriber
+    global_gate: '5s'
+    sender_gate: '1m'
 - name: Voting
   commands:
   - name: 'yes'
@@ -682,8 +707,8 @@ categories:
       Be aware that there can be only one vote at a time and this command has a
       large per-user cooldown, so dont waste it.
     args:
-    - name: login
-      doc: string
+    - name: chatter
+      doc: a user login
       optional: false
     sender_gate: '5m'
   - name: vote-restart
