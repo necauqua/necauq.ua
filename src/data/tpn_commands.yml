@@ -664,19 +664,6 @@ categories:
       doc: string
       optional: false
     permission: Moderator
-  - name: noita-cpu-usage
-    doc: |
-      Gets the current CPU usage of the game.
-    permission: Subscriber
-    global_gate: '5s'
-    sender_gate: '1m'
-    shortcode: cpu
-  - name: cpu-total
-    doc: |
-      Gets the current CPU usage of my entire PC.
-    permission: Subscriber
-    global_gate: '5s'
-    sender_gate: '1m'
 - name: Voting
   commands:
   - name: 'yes'
