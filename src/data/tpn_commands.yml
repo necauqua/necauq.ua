@@ -56,6 +56,10 @@ categories:
       doc: a non-negative number
       optional: true
     global_gate: '5s'
+  - name: player-pos
+    doc: |
+      Prints the current player position in pixels
+    permission: Caster
 - name: Keys
   commands:
   - name: up
@@ -381,10 +385,15 @@ categories:
   - name: banish
     doc: |
       Instantly banish a user to the shadow realm.
+
+      Can be temporary if a duration is provided.
     args:
     - name: chatter
       doc: a user login
       optional: false
+    - name: duration
+      doc: duration in freeform format (using `humantime` Rust library), so `10s`, or `2 minutes` or `1h30m` etc
+      optional: true
     permission: TwitchStaff
   - name: unbanish
     doc: |
@@ -649,6 +658,10 @@ categories:
       Stop running all current commands.
       This is similar to `break~`, except the commands following the holds that
       get completed do not run.
+    args:
+    - name: chatter
+      doc: a user login
+      optional: true
   - name: flag
     doc: |
       Set a bot flag.
