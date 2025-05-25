@@ -48,9 +48,29 @@ categories:
       doc: a non-negative number
       optional: true
     global_gate: '5s'
-  - name: pillar-done
+  - name: pillars-done
     doc: |
       Shows all the pillar achievements already completed in the running save.
+    args:
+    - name: top-n
+      doc: a non-negative number
+      optional: true
+    global_gate: '5s'
+  - name: spell-progress
+    doc: |
+      Shows the amount of unique spells ever cast vs total.
+    global_gate: '5s'
+  - name: spell-todo
+    doc: |
+      Shows all the spells that were never cast in the running save.
+    args:
+    - name: top-n
+      doc: a non-negative number
+      optional: true
+    global_gate: '5s'
+  - name: spells-done
+    doc: |
+      Shows all the spells that were already cast in the running save.
     args:
     - name: top-n
       doc: a non-negative number
@@ -60,6 +80,22 @@ categories:
     doc: |
       Prints the current player position in pixels
     permission: Caster
+  - name: entity-count
+    doc: |
+      Count the amount of loaded entities.
+
+      Can be filtered down by tags, for example `entity-count:gold_nugget~`.
+    args:
+    - name: tags
+      doc: the rest of the arguments
+      optional: false
+    permission: Subscriber
+    sender_gate: '5s'
+  - name: entity-tag-counts
+    doc: |
+      Aggregate a top list of tags that mark loaded entities.
+    permission: Vip
+    sender_gate: '5s'
 - name: Keys
   commands:
   - name: up
