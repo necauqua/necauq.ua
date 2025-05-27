@@ -79,7 +79,7 @@ categories:
   - name: player-pos
     doc: |
       Prints the current player position in pixels
-    permission: Caster
+    permission: Moderator
   - name: entity-count
     doc: |
       Count the amount of loaded entities.
@@ -451,12 +451,16 @@ categories:
       doc: a user login
       optional: false
     sender_gate: '15s'
-  - name: obs-restart-stream
+  - name: obs-stop-stream
     doc: |
-      Stops and then starts the stream again, useful for when Twitch kills the
-      stream due to the 48h limit and OBS does not realize.
+      Tell OBS to stop the stream.
     permission: Moderator
-    global_gate: '5m'
+    global_gate: '2m'
+  - name: obs-start-stream
+    doc: |
+      Tell OBS to start the stream.
+    permission: Moderator
+    global_gate: '2m'
   - name: obs-revive
     doc: |
       An untested script that starts OBS and then starts the stream if OBS died.
@@ -689,9 +693,14 @@ categories:
       currently being executed **right now** - so movement, `hold~` and `wait~`.
 
       This is kind of a niche thing, most likely you need `interrupt~`.
+    args:
+    - name: chatter
+      doc: a user login
+      optional: true
   - name: interrupt
     doc: |
       Stop running all current commands.
+
       This is similar to `break~`, except the commands following the holds that
       get completed do not run.
     args:
@@ -713,6 +722,16 @@ categories:
       doc: string
       optional: false
     permission: Moderator
+  - name: tts
+    doc: |
+      Say something on stream through the TTS.
+
+      Only works for >= subscriber level, or from global macros.
+    args:
+    - name: msg
+      doc: string
+      optional: false
+    sender_gate: '1m'
 - name: Voting
   commands:
   - name: 'yes'
