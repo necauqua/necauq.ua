@@ -20,7 +20,7 @@ categories:
       Read the currently picked up perks. Look ma, streamer wands at home!
     args:
     - name: top-n
-      doc: a non-negative number
+      doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
   - name: damage-multipliers
@@ -45,7 +45,7 @@ categories:
       Shows all the pillar achievements not yet completed in the running save.
     args:
     - name: top-n
-      doc: a non-negative number
+      doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
   - name: pillars-done
@@ -53,7 +53,7 @@ categories:
       Shows all the pillar achievements already completed in the running save.
     args:
     - name: top-n
-      doc: a non-negative number
+      doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
   - name: spell-progress
@@ -65,7 +65,7 @@ categories:
       Shows all the spells that were never cast in the running save.
     args:
     - name: top-n
-      doc: a non-negative number
+      doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
   - name: spells-done
@@ -73,7 +73,7 @@ categories:
       Shows all the spells that were already cast in the running save.
     args:
     - name: top-n
-      doc: a non-negative number
+      doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
   - name: player-pos
@@ -103,7 +103,7 @@ categories:
       Hold <kbd>W</kbd> for the specified duration.
     args:
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
       optional: true
     shortcode: u
   - name: left
@@ -111,7 +111,7 @@ categories:
       Hold <kbd>A</kbd> for the specified duration.
     args:
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
       optional: true
     shortcode: l
   - name: down
@@ -119,7 +119,7 @@ categories:
       Hold <kbd>S</kbd> for the specified duration.
     args:
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
       optional: true
     shortcode: d
   - name: right
@@ -127,7 +127,7 @@ categories:
       Hold <kbd>D</kbd> for the specified duration.
     args:
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
       optional: true
     shortcode: r
   - name: interact
@@ -186,7 +186,7 @@ categories:
       doc: string
       optional: false
     - name: script
-      doc: a script string, will not have it's vars expanded
+      doc: a script string that _will not have it's vars expanded_
       optional: false
     shortcode: mr
   - name: macro-delete
@@ -205,7 +205,7 @@ categories:
       doc: string
       optional: false
     - name: script
-      doc: a script string, will not have it's vars expanded
+      doc: a script string that _will not have it's vars expanded_
       optional: false
     permission: Moderator
     shortcode: gmr
@@ -267,7 +267,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     - name: rename
-      doc: string
+      doc: string, optional
       optional: true
   - name: macro
     doc: |
@@ -304,7 +304,7 @@ categories:
       doc: a number in range from 0 to 1000
       optional: false
     - name: script
-      doc: a script string, will not have it's vars expanded
+      doc: a script string that _will not have it's vars expanded_
       optional: false
   - name: group
     doc: |
@@ -322,7 +322,7 @@ categories:
       doc: a script string
       optional: false
     - name: custom-status-name
-      doc: string
+      doc: string, optional
       optional: true
     shortcode: g
   - name: try
@@ -368,7 +368,7 @@ categories:
       ```
     args:
     - name: script
-      doc: a script string, will not have it's vars expanded
+      doc: a script string that _will not have it's vars expanded_
       optional: false
     permission: Subscriber
   - name: math
@@ -382,40 +382,51 @@ categories:
     sender_gate: '3s'
   - name: set
     doc: |
-      Stores a personal named number that will be replaced in any commands you
+      Stores text that will be replaced in any commands you
       call (including macros) if you reference it as `%name`.
+
+      Note that while this command accepts text, an argument wrapped in
+      parenthesis - without quotes or braces - will be passed through the
+      calculator first as if the command expected a number.
     args:
     - name: name
       doc: string
       optional: false
     - name: value
-      doc: a number
-      optional: false
-  - name: set-text
+      doc: string, optional
+      optional: true
+  - name: let
     doc: |
-      Stores a personal named value that will be replaced in any commands you
-      call (including macros) if you reference it as `%name`.
+      Similar to `set~`, but the text is only stored for the chat message being executed.
     args:
     - name: name
       doc: string
       optional: false
     - name: value
-      doc: string
-      optional: false
+      doc: string, optional
+      optional: true
   - name: del
     doc: |
-      Deletes a personal named value. Can delete more than one at once.
+      Deletes a variable. Can delete more than one at once.
     args:
     - name: names
       doc: the rest of the arguments
       optional: false
   - name: list-vars
     doc: |
-      Lists all of your personal named values.
+      Lists all of your variables.
+    sender_gate: '5s'
+  - name: get
+    doc: |
+      A debug command that replies with the value of the given variable.
+    args:
+    - name: name
+      doc: string
+      optional: false
     sender_gate: '5s'
   - name: clear
     doc: |
-      Clears all of your personal named values.
+      Clears all of your variables.
 - name: Moderation
   commands:
   - name: banish
@@ -428,7 +439,7 @@ categories:
       doc: a user login
       optional: false
     - name: duration
-      doc: duration in freeform format (using `humantime` Rust library), so `10s`, or `2 minutes` or `1h30m` etc
+      doc: duration in freeform format (using `humantime` Rust library), so `10s`, or `2 minutes` or `1h30m` etc, optional
       optional: true
     permission: TwitchStaff
   - name: unbanish
@@ -487,7 +498,7 @@ categories:
       doc: a number
       optional: false
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 0. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
       optional: true
   - name: mouse
     doc: |
@@ -503,7 +514,7 @@ categories:
       doc: a number
       optional: false
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 0. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
       optional: true
     shortcode: m
   - name: mouse-move
@@ -517,7 +528,7 @@ categories:
       doc: a number
       optional: false
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 0. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
       optional: true
     shortcode: mm
   - name: click
@@ -539,7 +550,7 @@ categories:
       little tomfoolery, but that will get you voted into the shadow realm.
     args:
     - name: millis
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
       optional: true
     shortcode: h
   - name: hotbar
@@ -552,6 +563,8 @@ categories:
   - name: wand
     doc: |
       A helper to move the mouse to the wand slot without you having to guess slot coordinates.
+
+      Especially useful as it takes into account different heights of wand sprites.
     args:
     - name: wand
       doc: a number in range from 1 to 4
@@ -574,7 +587,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     - name: word
-      doc: string
+      doc: string, optional
       optional: true
     sender_gate: '3s'
   - name: stat-global
@@ -587,7 +600,7 @@ categories:
       With an argument filters messages by the given word(s), just like `stat`.
     args:
     - name: word
-      doc: string
+      doc: string, optional
       optional: true
     sender_gate: '3s'
   - name: first-message
@@ -611,7 +624,7 @@ categories:
       Get a list of top-N chatters of all time, by number of sent messages.
     args:
     - name: 'n'
-      doc: a number in range from 1 to 15
+      doc: a number in range from 1 to 15, optional
       optional: true
     sender_gate: '10m'
   - name: rank
@@ -682,7 +695,7 @@ categories:
       Very useful for multi-command messages.
     args:
     - name: duration
-      doc: duration in milliseconds, at most 15000, defaults to 500. You can also specify whole seconds by appending 's'
+      doc: duration in milliseconds, will be limited to at most 300000, defaults to 500
       optional: true
     shortcode: w
   - name: break
@@ -695,7 +708,7 @@ categories:
       This is kind of a niche thing, most likely you need `interrupt~`.
     args:
     - name: chatter
-      doc: a user login
+      doc: a user login, optional
       optional: true
   - name: interrupt
     doc: |
@@ -705,7 +718,7 @@ categories:
       get completed do not run.
     args:
     - name: chatter
-      doc: a user login
+      doc: a user login, optional
       optional: true
   - name: flag
     doc: |
@@ -732,6 +745,20 @@ categories:
       doc: string
       optional: false
     sender_gate: '1m'
+  - name: what-is
+    doc: |
+      Get information about a macro or command.
+
+      If you see someone running some weird command, run
+      `what-is:command:their-name~` to figure out what it was.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: to
+      doc: a user login, defaults to you
+      optional: true
+    sender_gate: '3s'
 - name: Voting
   commands:
   - name: 'yes'
