@@ -720,6 +720,12 @@ categories:
     - name: chatter
       doc: a user login, optional
       optional: true
+  - name: discard
+    doc: |
+      Interrupt all commands *originating from the current message*.
+
+      On it's own this does nothing, but it can be used to limit the duration of
+      the current message or similar.
   - name: flag
     doc: |
       Set a bot flag.
@@ -736,6 +742,14 @@ categories:
       doc: string
       optional: false
     permission: Moderator
+  - name: set-nightmare
+    doc: |
+      Makes the bot start the game in nightmare/ng.
+    args:
+    - name: value
+      doc: a boolean value (true/t/yes/y/1 or false/f/no/n/0)
+      optional: false
+    permission: Vip
   - name: fix-seed
     doc: |
       Makes the bot start the game with a specific seed.
@@ -743,11 +757,11 @@ categories:
     - name: seed
       doc: a non-negative number
       optional: false
-    permission: Moderator
+    permission: Vip
   - name: unfix-seed
     doc: |
       Undoes the effect of `fix_seed~`, so the game will start with a random seed again.
-    permission: Moderator
+    permission: Vip
   - name: tts
     doc: |
       Say something on stream through the TTS.
