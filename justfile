@@ -8,5 +8,9 @@ deploy:
     nix shell nixpkgs#hugo nixpkgs#go --command hugo -F
     rsync -avze 'ssh -p 5555' --delete build/public/ main-deployer@necauq.ua:.
 
+    # ughh the weird permission issue is weird,
+    # I should fix my nginx config or something
+    ssh necauq.ua systemd-tmpfiles --create
+
 dev:
     nix shell nixpkgs#hugo nixpkgs#go --command hugo server -DF
