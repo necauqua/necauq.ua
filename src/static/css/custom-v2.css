@@ -5,6 +5,10 @@ html {
   border: none;
 }
 
+.max-width {
+  max-width: 80rem;
+}
+
 /* a pleasant no-js fade-in-out on chrome for free  */
 @view-transition {
   navigation: auto;
