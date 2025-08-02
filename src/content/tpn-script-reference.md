@@ -1,6 +1,7 @@
 +++
 title = 'TPN Script Reference'
 build.list = 'never'
+description = 'TPN script is a "scripting language" of sorts that I am using in my Twitch chat'
 +++
 
 # TPN Script Reference
