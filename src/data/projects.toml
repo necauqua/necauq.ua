@@ -8,8 +8,8 @@ for.. things
 '''
 
 [[list]]
-name = "Negative Streaks"
-url = "https://github.com/necauqua/negative-streaks"
+name = "Negative Streak"
+url = "https://github.com/necauqua/negative-streak"
 desc = '''
 A tiny engine mod for Noita that makes winstreaks go into negatives on
 consecutive deaths.\
