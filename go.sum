@@ -1,4 +1,4 @@
-github.com/KKKZOZ/hugo-admonitions v0.4.5 h1:Z2feKyOirh5ra7Ut5hirV1Pnv8syizl0rf6FkjQKThE=
-github.com/KKKZOZ/hugo-admonitions v0.4.5/go.mod h1:4PsJAsqo3mS3VzAtDLa8k0ds+CJQUWZhAo9kLi1NRlM=
-github.com/necauqua/hugo-theme-cactus v0.0.0-20250327214934-d1d4c09aa58a h1:1wizmlkevWtf1cVkhYuC+bDygliRxgrTG+IxdeNSWlU=
-github.com/necauqua/hugo-theme-cactus v0.0.0-20250327214934-d1d4c09aa58a/go.mod h1:WBI7o7zis8HeiUaU5s/jTsYtjOX+6mbn8NR5ce3AHoA=
+github.com/KKKZOZ/hugo-admonitions v0.10.1 h1:ZJU157gve6JhmB5fHKWjwgRI80s+mFyCqASTkAHazLI=
+github.com/KKKZOZ/hugo-admonitions v0.10.1/go.mod h1:4PsJAsqo3mS3VzAtDLa8k0ds+CJQUWZhAo9kLi1NRlM=
+github.com/necauqua/hugo-theme-cactus v0.0.0-20250802170743-6881b1b138e0 h1:Cuqhr90cpZ5l0uDd+SFA6jY7+TogsDsVDEZnipgSlGY=
+github.com/necauqua/hugo-theme-cactus v0.0.0-20250802170743-6881b1b138e0/go.mod h1:WBI7o7zis8HeiUaU5s/jTsYtjOX+6mbn8NR5ce3AHoA=
