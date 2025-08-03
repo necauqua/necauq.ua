@@ -146,8 +146,7 @@ In any string, if you have a bit that looks like `%name`, it would be replaced
 by the contents of that variable - or by nothing if the variable was not set.
 
 ```tpn
-for example,
-let:test:necauqua echo:{ Hello, %name! }~
+let:name:necauqua echo:{ Hello, %name! }~
 ```
 
 Repeats and loops expose a variable named `i` to the script they're evaluating:

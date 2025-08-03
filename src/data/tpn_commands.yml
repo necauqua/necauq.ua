@@ -276,7 +276,7 @@ categories:
       Macros can call other macros, but there is a recursion limit!
 
       Also you can run a macro recorded by someone else by appending their login
-      as the third argument.
+      as the second argument.
     args:
     - name: name
       doc: string
@@ -572,6 +572,28 @@ categories:
     - name: slot
       doc: a number in range from 1 to 26
       optional: false
+- name: Sounds
+  commands:
+  - name: tts
+    doc: |
+      Say something on stream through the TTS.
+
+      Only works for >= subscriber level, or from global macros.
+    args:
+    - name: msg
+      doc: string
+      optional: false
+    sender_gate: '1m'
+  - name: play-sound
+    doc: |
+      Play a sound on stream.
+      Sounds ids are secret.
+      And also the command can only be run from global macros anyway ¯\_(ツ)_/¯.
+    args:
+    - name: sound-id
+      doc: string
+      optional: false
+    sender_gate: '1m'
 - name: Stats
   commands:
   - name: stat
@@ -762,16 +784,6 @@ categories:
     doc: |
       Undoes the effect of `fix_seed~`, so the game will start with a random seed again.
     permission: Vip
-  - name: tts
-    doc: |
-      Say something on stream through the TTS.
-
-      Only works for >= subscriber level, or from global macros.
-    args:
-    - name: msg
-      doc: string
-      optional: false
-    sender_gate: '1m'
   - name: what-is
     doc: |
       Get information about a macro or command.
