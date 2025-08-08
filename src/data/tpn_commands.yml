@@ -594,6 +594,16 @@ categories:
       doc: string
       optional: false
     sender_gate: '1m'
+  - name: now-playing
+    doc: |
+      Get the title of the song that's currently playing on stream, if any.
+    global_gate: '5s'
+    shortcode: np
+  - name: skip
+    doc: |
+      Skips the song that's currently playing on stream, if any.
+    permission: Vip
+    global_gate: '15s'
 - name: Stats
   commands:
   - name: stat
