@@ -604,6 +604,21 @@ categories:
       Skips the song that's currently playing on stream, if any.
     permission: Vip
     global_gate: '15s'
+  - name: song-request
+    doc: |
+      Adds the given song to the YouTube Music queue.
+
+      This only accepts YouTube links or IDs.
+
+      Note that the song will be added to the front of the queue - this is
+      because usually the queue is full of songs from my stream playlist and the
+      point of the command is to show me a song you think I wont insta-skip :)
+    args:
+    - name: url-or-id
+      doc: string
+      optional: false
+    sender_gate: '1m'
+    shortcode: sr
 - name: Stats
   commands:
   - name: stat
