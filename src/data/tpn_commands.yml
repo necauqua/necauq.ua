@@ -619,6 +619,15 @@ categories:
       optional: false
     sender_gate: '1m'
     shortcode: sr
+  - name: volume
+    doc: |
+      Set YouTube Music volume.
+    args:
+    - name: volume
+      doc: a number in range from 0 to 100
+      optional: false
+    permission: Vip
+    sender_gate: '3s'
 - name: Stats
   commands:
   - name: stat
