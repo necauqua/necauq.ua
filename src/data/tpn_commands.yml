@@ -96,81 +96,12 @@ categories:
       Aggregate a top list of tags that mark loaded entities.
     permission: Vip
     sender_gate: '5s'
-- name: Keys
+- name: Economy
   commands:
-  - name: up
+  - name: balance
     doc: |
-      Hold <kbd>W</kbd> for the specified duration.
-    args:
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
-      optional: true
-    shortcode: u
-  - name: left
-    doc: |
-      Hold <kbd>A</kbd> for the specified duration.
-    args:
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
-      optional: true
-    shortcode: l
-  - name: down
-    doc: |
-      Hold <kbd>S</kbd> for the specified duration.
-    args:
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
-      optional: true
-    shortcode: d
-  - name: right
-    doc: |
-      Hold <kbd>D</kbd> for the specified duration.
-    args:
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
-      optional: true
-    shortcode: r
-  - name: interact
-    doc: |
-      Press <kbd>E</kbd>.
-    shortcode: i
-  - name: kick
-    doc: |
-      Press <kbd>F</kbd>.
-    shortcode: k
-  - name: slot
-    doc: |
-      Press <kbd>1</kbd> through <kbd>8</kbd>.
-    args:
-    - name: slot
-      doc: a number in range from 1 to 8
-      optional: false
-    shortcode: s
-  - name: open-inventory
-    doc: |
-      Press <kbd>Tab</kbd> _only if_ the inventory is closed.
-
-      This command also waits for the game inventory state to actually change.
-      Also this command moves the mouse to the top left corner of the screen to
-      force mouse movement after opening the inventory, since if you don't move
-      it the game does not register hovering over slots lol.
-    shortcode: o
-  - name: close-inventory
-    doc: |
-      Press <kbd>Tab</kbd> _only if_ the inventory is opened.
-
-      This command also waits for the game inventory state to actually change.
-    shortcode: x
-  - name: pause
-    doc: |
-      Pause the game.
-
-      This actually just presses the <kbd>Esc</kbd> key.
-
-      And yes, chatters will be able to move the mouse around and click stuff, so
-      this command is kinda annoying without `full-stop~` as they could mess up
-      the settings or start a different gamemode.
-    permission: Moderator
+      Check your current balance of charges
+    sender_gate: '3s'
 - name: Macros
   commands:
   - name: macro-record
@@ -462,116 +393,6 @@ categories:
       doc: a user login
       optional: false
     sender_gate: '15s'
-  - name: obs-stop-stream
-    doc: |
-      Tell OBS to stop the stream.
-    permission: Moderator
-    global_gate: '2m'
-  - name: obs-start-stream
-    doc: |
-      Tell OBS to start the stream.
-    permission: Moderator
-    global_gate: '2m'
-  - name: obs-revive
-    doc: |
-      An untested script that starts OBS and then starts the stream if OBS died.
-      Does nothing if the OBS process is running.
-    permission: Moderator
-    global_gate: '5m'
-- name: Mouse
-  commands:
-  - name: look
-    doc: |
-      Position the mouse relative to the player on the screen.
-
-      For example, `look:0:0~` will move the mouse to the player's position - but
-      note that camera will move, quickly making the mouse position no longer be
-      on the player.
-
-      This is extremely useful, for example `slot:5~ look:0:-70~ hold~` to douse
-      Minä.
-    args:
-    - name: dx
-      doc: a number
-      optional: false
-    - name: dy
-      doc: a number
-      optional: false
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
-      optional: true
-  - name: mouse
-    doc: |
-      Move the mouse to the absolute position on the screen.
-
-      The screen is 1920x1080, and the origin is in the center of it,
-      so `mouse:0:0~` will move the mouse to the center of the screen.
-    args:
-    - name: x
-      doc: a number
-      optional: false
-    - name: 'y'
-      doc: a number
-      optional: false
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
-      optional: true
-    shortcode: m
-  - name: mouse-move
-    doc: |
-      Move the mouse relative to its current position.
-    args:
-    - name: dx
-      doc: a number
-      optional: false
-    - name: dy
-      doc: a number
-      optional: false
-    - name: duration
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 0
-      optional: true
-    shortcode: mm
-  - name: click
-    doc: |
-      Click the left mouse button.
-    shortcode: c
-  - name: throw
-    doc: |
-      Click the right mouse button.
-  - name: hold
-    doc: |
-      Hold left mouse button down for the specified duration of milliseconds (defaulting to 500).
-
-      An example of consistently dragging an item in your inventory:
-      ```tpn
-      open-inventory~ hotbar:5~ hold~ close-inventory~ | wait:250~ hotbar:8~
-      ```
-      You can replace `hotbar:8~` with something like `mouse:0:0~` if you want a
-      little tomfoolery, but that will get you voted into the shadow realm.
-    args:
-    - name: millis
-      doc: duration in milliseconds, will be limited to at most 15000, defaults to 500
-      optional: true
-    shortcode: h
-  - name: hotbar
-    doc: |
-      A helper to move the mouse to the hotbar slot without you having to guess slot coordinates.
-    args:
-    - name: slot
-      doc: a number in range from 1 to 24
-      optional: false
-  - name: wand
-    doc: |
-      A helper to move the mouse to the wand slot without you having to guess slot coordinates.
-
-      Especially useful as it takes into account different heights of wand sprites.
-    args:
-    - name: wand
-      doc: a number in range from 1 to 4
-      optional: false
-    - name: slot
-      doc: a number in range from 1 to 26
-      optional: false
 - name: Sounds
   commands:
   - name: tts
@@ -691,10 +512,6 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '1m'
-  - name: balance
-    doc: |
-      Get the bless/curse balance for the current run
-    sender_gate: '3s'
 - name: Util
   commands:
   - name: ping
@@ -703,6 +520,8 @@ categories:
 
       I heard that scarcity creates value, so getting a pong is very _cool_ and
       _pog_, because only one person can get it in an hour.
+
+      Also this gives you a charge :)
     global_gate: '1h'
   - name: echo
     doc: |
@@ -728,18 +547,6 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
-  - name: fix-obs-capture
-    doc: |
-      Sometimes the capture dies (but the game is fine) because of my brittle scripts.
-
-      Try running this first before doing a full restart etc etc.
-    global_gate: '30s'
-  - name: fix-obs-sound
-    doc: |
-      The sound setup is the most brittle jank thing actually, and dies most often.
-
-      Try running this first before doing a full restart etc etc.
-    global_gate: '30s'
   - name: is-game-running
     doc: |
       Check if noita.exe process is present, aka not dead.
@@ -866,43 +673,6 @@ categories:
       doc: a user login
       optional: false
     sender_gate: '5m'
-  - name: vote-restart
-    doc: |
-      This allows to start a vote to restart the game in case it crashed or got
-      stuck or whatever, and I'm not there to fix it.
-
-      This command could fix a lot of issues as it is fully kills and restarts
-      everything (like the OBS capture might get broken etc).
-
-      Needs several(!) people to run this to start the vote, and the vote itself
-      has to have >=70% yes votes.
-
-      Be aware that there can be only one vote at a time and this command has a
-      large per-user cooldown, so dont waste it.
-    sender_gate: '5m'
-  - name: restart
-    doc: |
-      (Re)start the game immediately. This is the same as a successful
-      `vote-restart~`, but instant.
-    permission: Verified
-    global_gate: '2m'
-  - name: vote-reset
-    doc: |
-      This allows to start a vote to restart the game and ***delete the world***,
-      in case you got soft-locked or the world is corrupted etc.
-
-      Needs several(!) people to run this to start the vote, and the vote itself
-      has to have >=70% yes votes.
-
-      Be aware that there can be only one vote at a time and this command has a
-      large per-user cooldown, so dont waste it.
-    sender_gate: '5m'
-  - name: reset
-    doc: |
-      Reset the game (deleting the current world) immediately. This is the same
-      as a successful `vote-reset~`, but instant.
-    permission: Moderator
-    global_gate: '2m'
 permissions:
 - name: Caster
   description: Only the broadcaster can use this command.
