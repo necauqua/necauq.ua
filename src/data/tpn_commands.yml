@@ -358,6 +358,102 @@ categories:
   - name: clear
     doc: |
       Clears all of your variables.
+  - name: if-eq
+    doc: |
+      Runs the `then` script if given values are equal, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: string
+      optional: false
+    - name: b
+      doc: string
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
+  - name: if-ne
+    doc: |
+      Runs the `then` script if given values are not equal, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: string
+      optional: false
+    - name: b
+      doc: string
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
+  - name: if-ge
+    doc: |
+      Runs the `then` script if the first number is greater than or equal to the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
+  - name: if-gt
+    doc: |
+      Runs the `then` script if the first number is greater than the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
+  - name: if-le
+    doc: |
+      Runs the `then` script if the first number is less than or equal to the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
+  - name: if-lt
+    doc: |
+      Runs the `then` script if the first number is less than the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
 - name: Moderation
   commands:
   - name: banish
