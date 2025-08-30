@@ -102,6 +102,9 @@ categories:
     doc: |
       Check your current balance of charges
     sender_gate: '3s'
+  - name: unleash-me
+    doc: |
+      Spend a charge to remove all of your current timeouts.
 - name: Macros
   commands:
   - name: macro-record
@@ -506,11 +509,12 @@ categories:
       Play a sound on stream.
       Sounds ids are secret.
       And also the command can only be run from global macros anyway ¯\_(ツ)_/¯.
+
+      Dynamic sender gate 1 minute per sound for now.
     args:
     - name: sound-id
       doc: string
       optional: false
-    sender_gate: '1m'
   - name: now-playing
     doc: |
       Get the title of the song that's currently playing on stream, if any.
@@ -519,7 +523,8 @@ categories:
   - name: skip
     doc: |
       Skips the song that's currently playing on stream, if any.
-    permission: Vip
+
+      This will cost you 1 charge, unless you're VIP or higher.
     global_gate: '15s'
   - name: song-request
     doc: |
