@@ -55,6 +55,16 @@ I am obviously just looking at the message badges lmao
       {{ if .shortcode }}
       <span class="pill">shortcode: {{ .shortcode }}</span>
       {{ end }}
+      {{ if .cost }}
+      <span class="pill" style="background-color: #553;">cost: {{ .cost }}{{ if .free_for }} / >=<abbr
+          title="Does not cost charges at this permission level">{{ .free_for
+          }}</abbr>{{ end }}</span>
+      {{ end }}
+      {{ if .global_macro_exempt }}
+      <span class="pill"><abbr
+          title="If this command is inside of a global macro, that macro will work for everyone and not cost charges">global
+          macro exempt</abbr></span>
+      {{ end }}
     </p>
     <p>{{ .doc | markdownify }}</p>
     {{ if .global_gate }}
