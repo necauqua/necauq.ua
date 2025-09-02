@@ -100,7 +100,11 @@ categories:
   commands:
   - name: balance
     doc: |
-      Check your current balance of charges
+      Check the current charge balance
+    args:
+    - name: chatter
+      doc: a user login, defaults to you
+      optional: true
     sender_gate: '3s'
   - name: unleash-me
     doc: |
@@ -108,7 +112,10 @@ categories:
     cost: '1⚡︎'
   - name: transfer
     doc: |
-      Transfer some of your charges to another user
+      Transfer some of your charges to another user.
+
+      When run from global macros, the amount can be negative to "steal" charges.
+      This can be used by mods to set up macros that reward users.
     args:
     - name: target
       doc: a user login
@@ -116,8 +123,22 @@ categories:
     - name: amount
       doc: a number of charges, in form of a number with up to 3 decimal places
       optional: false
+    global_macro_exempt: true
     sender_gate: '3s'
     cost: '0.004⚡︎'
+  - name: award
+    doc: |
+      Conjure some charges out of thin air and award them to a user.
+
+      The amount can be negative 🙃
+    args:
+    - name: target
+      doc: a user login, defaults to you
+      optional: true
+    - name: amount
+      doc: a number of charges, in form of a number with up to 3 decimal places
+      optional: false
+    permission: Caster
 - name: Macros
   commands:
   - name: macro-record
@@ -284,18 +305,6 @@ categories:
     - name: script
       doc: a script string
       optional: false
-  - name: lock
-    doc: |
-      Similarly to `group`, executes a given string without counting towards
-      limits.
-
-      The difference is that only one `lock` script can run at a time, if
-      one is already running this command does nothing.
-    args:
-    - name: script
-      doc: a script string
-      optional: false
-    shortcode: b
   - name: loop
     doc: |
       Repeatedly execute a given script indefinitely - until an interrupt is
@@ -342,6 +351,22 @@ categories:
     - name: value
       doc: string, optional
       optional: true
+  - name: global-set
+    doc: |
+      A moderator-only version of `set~` that sets a global variable instead of a
+      personal one.
+
+      Global variables will be replaced by anyone referencing them as `%name`,
+      unless they have their own personal variable with the same name, which
+      would take precedence.
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: value
+      doc: string, optional
+      optional: true
+    permission: Moderator
   - name: let
     doc: |
       Similar to `set~`, but the text is only stored for the chat message being executed.
