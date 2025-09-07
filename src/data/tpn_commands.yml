@@ -550,7 +550,7 @@ categories:
       use this command to get an idea of what sounds are available.
 
       Sender gate is at least 10 seconds for everything, but individual sounds
-      can have their own dynamic cooldowns (currently all sounds at 1 minute).
+      have their own dynamic cooldowns.
     args:
     - name: sound-id
       doc: string
@@ -582,6 +582,9 @@ categories:
     - name: url-or-id
       doc: string
       optional: false
+    - name: extra
+      doc: string, optional
+      optional: true
     sender_gate: '1m'
     shortcode: sr
   - name: volume
@@ -736,42 +739,24 @@ categories:
 
       On it's own this does nothing, but it can be used to limit the duration of
       the current message or similar.
-  - name: flag
+  - name: setting
     doc: |
-      Set a bot flag.
+      Set a bot setting.
 
-      Flags that currently do things are:
+      Settings that currently do things are:
       - `full-stop`: disables processing any commands from non-mods
-      - `no-restarts`: disables the game restarting on player death
-      - `nightmare`: enables the nightmare mode
+      - `nosr`: disables song requests
 
-      If the flag argument is prefixed with `-` it is removed if it was set
-      previously.
+      If the key argument is prefixed with `-` the setting is removed (value is
+      ignored).
     args:
-    - name: flag
+    - name: key
       doc: string
       optional: false
-    permission: Moderator
-  - name: set-nightmare
-    doc: |
-      Makes the bot start the game in nightmare/ng.
-    args:
     - name: value
-      doc: a boolean value (true/t/yes/y/1 or false/f/no/n/0)
-      optional: false
-    permission: Vip
-  - name: fix-seed
-    doc: |
-      Makes the bot start the game with a specific seed.
-    args:
-    - name: seed
-      doc: a non-negative number
-      optional: false
-    permission: Vip
-  - name: unfix-seed
-    doc: |
-      Undoes the effect of `fix_seed~`, so the game will start with a random seed again.
-    permission: Vip
+      doc: string, optional
+      optional: true
+    permission: Moderator
   - name: what-is
     doc: |
       Get information about a macro or command.
