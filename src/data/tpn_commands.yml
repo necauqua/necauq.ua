@@ -530,6 +530,15 @@ categories:
       doc: a user login
       optional: false
     sender_gate: '15s'
+  - name: set-title
+    doc: |
+      Set the stream title, common moderation command, nothing special here.
+    args:
+    - name: title
+      doc: string
+      optional: false
+    permission: Moderator
+    global_gate: '5s'
 - name: Sounds
   commands:
   - name: tts
