@@ -596,13 +596,25 @@ categories:
       optional: true
     sender_gate: '1m'
     shortcode: sr
+  - name: music-queue
+    doc: |
+      List the songs that were requested through `song-request~`.
+    args:
+    - name: top
+      doc: a non-negative number, optional
+      optional: true
+    global_gate: '30s'
+  - name: music-queue-reset
+    doc: |
+      A helper command to help fix potential music queue issues.
+    permission: Moderator
   - name: volume
     doc: |
-      Set YouTube Music volume.
+      Get or set the YouTube Music volume.
     args:
     - name: volume
-      doc: a number in range from 0 to 100
-      optional: false
+      doc: a number in range from 0 to 100, optional
+      optional: true
     permission: Vip
     sender_gate: '3s'
 - name: Stats
@@ -680,6 +692,11 @@ categories:
       There is also some magical property to this command..
     global_gate: '1h'
     cost: '-1⚡︎'
+  - name: last-pinger
+    doc: |
+      Get the name of the last person who got the `ping~` command during the
+      current stream.
+    sender_gate: '15s'
   - name: echo
     doc: |
       A building block for basic static text commands.
