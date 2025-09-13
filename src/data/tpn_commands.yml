@@ -16,6 +16,10 @@ categories:
     doc: |
       Close the current bet, preventing new bets from being placed.
     permission: Caster
+  - name: is-bet
+    doc: |
+      Show the current active bet.
+    sender_gate: '10s'
   - name: bet
     doc: |
       Place a bet on the current active bet.
@@ -33,6 +37,10 @@ categories:
     doc: |
       Remove your bet from the current active bet, refunding your wager.
     sender_gate: '5s'
+  - name: cancel-bet
+    doc: |
+      Cancel the current bet, refunding all wagers.
+    permission: Caster
   - name: rollback
     doc: |
       Rollback the last settled bet, returning all winnings to the users and
