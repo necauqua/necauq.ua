@@ -16,6 +16,10 @@ categories:
     doc: |
       Close the current bet, preventing new bets from being placed.
     permission: Caster
+  - name: reopen
+    doc: |
+      Reopen a closed bet, allowing new bets to be placed.
+    permission: Caster
   - name: is-bet
     doc: |
       Show the current active bet.
