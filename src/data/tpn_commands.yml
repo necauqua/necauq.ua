@@ -221,7 +221,7 @@ categories:
     doc: |
       Say hi to the stream!
     sender_gate: '12h'
-    cost: '0.2⚡︎'
+    cost: '-0.2⚡︎'
 - name: Macros
   commands:
   - name: macro-record
