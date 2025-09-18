@@ -795,6 +795,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
+    shortcode: le
   - name: is-game-running
     doc: |
       Check if noita.exe process is present, aka not dead.
