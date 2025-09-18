@@ -767,6 +767,22 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '1m'
+  - name: command-stat
+    doc: |
+      Get the amount of times you or some other chatter has successfully(!) used
+      the given command (does not work with shortcodes, use the full command
+      name).
+
+      Note that the accurate counting only started since the introduction of this
+      command (with ping~ manually backfilled from chat logs of bot replies).
+    args:
+    - name: name
+      doc: string
+      optional: false
+    - name: chatter
+      doc: a user login, defaults to you
+      optional: true
+    sender_gate: '15s'
 - name: Util
   commands:
   - name: echo
