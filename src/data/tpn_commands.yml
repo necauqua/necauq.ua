@@ -37,6 +37,14 @@ categories:
       doc: a number of charges, in form of a number with up to 3 decimal places, optional
       optional: true
     sender_gate: '5s'
+  - name: get-bet
+    doc: |
+      Get your current bet, if any.
+    args:
+    - name: chatter
+      doc: a user login, defaults to you
+      optional: true
+    sender_gate: '5s'
   - name: unbet
     doc: |
       Remove your bet from the current active bet, refunding your wager.
