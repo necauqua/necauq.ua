@@ -73,7 +73,6 @@ categories:
   - name: seed
     doc: |
       Read the current seed
-    permission: Vip
     global_gate: '15s'
   - name: death-count
     doc: |
@@ -95,7 +94,7 @@ categories:
   - name: damage-multipliers
     doc: |
       Read the current non-1 damage multipliers of the player entity.
-    permission: Vip
+    permission: Subscriber
     global_gate: '5s'
   - name: check-flag
     doc: |
@@ -125,30 +124,10 @@ categories:
       doc: a non-negative number, optional
       optional: true
     global_gate: '5s'
-  - name: spell-progress
-    doc: |
-      Shows the amount of unique spells ever cast vs total.
-    global_gate: '5s'
-  - name: spell-todo
-    doc: |
-      Shows all the spells that were never cast in the running save.
-    args:
-    - name: top-n
-      doc: a non-negative number, optional
-      optional: true
-    global_gate: '5s'
-  - name: spells-done
-    doc: |
-      Shows all the spells that were already cast in the running save.
-    args:
-    - name: top-n
-      doc: a non-negative number, optional
-      optional: true
-    global_gate: '5s'
   - name: player-pos
     doc: |
       Prints the current player position in pixels
-    permission: Moderator
+    permission: Subscriber
   - name: entity-count
     doc: |
       Count the amount of loaded entities.
@@ -163,7 +142,7 @@ categories:
   - name: entity-tag-counts
     doc: |
       Aggregate a top list of tags that mark loaded entities.
-    permission: Vip
+    permission: Subscriber
     sender_gate: '5s'
 - name: Economy
   commands:
@@ -175,6 +154,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
+    shortcode: b
   - name: unleash-me
     doc: |
       Spend a charge to remove all of your current timeouts.
@@ -213,12 +193,13 @@ categories:
       Respond with "pong!".
 
       I heard that scarcity creates value, so getting a pong is very _cool_ and
-      _pog_, because only one person can get it in an hour.
+      _pog_, because only one person can get it in an hour-ish.
+
+      This command has a dynamic global gate of 55-65 minutes, chosen at random.
 
       Ping fails if you were the last person to do it!
 
       There is also some magical property to this command..
-    global_gate: '1h'
     cost: '-1⚡︎'
   - name: last-pinger
     doc: |
@@ -229,6 +210,7 @@ categories:
     doc: |
       Say hi to the stream!
     sender_gate: '12h'
+    shortcode: hi
     cost: '-0.2⚡︎'
 - name: Macros
   commands:
@@ -663,12 +645,36 @@ categories:
       Get the title of the song that's currently playing on stream, if any.
     global_gate: '5s'
     shortcode: np
+  - name: volume
+    doc: |
+      Get or set the YouTube Music volume.
+    args:
+    - name: volume
+      doc: a number in range from 0 to 100, optional
+      optional: true
+    permission: Vip
+    sender_gate: '3s'
+    shortcode: v
   - name: skip
     doc: |
       Skips the song that's currently playing on stream, if any.
     global_gate: '15s'
     cost: '1⚡︎'
     free_for: Vip
+  - name: unskip
+    doc: |
+      A "back" button, undoes skips or otherwise goes back to the previous song.
+    global_gate: '15s'
+    cost: '1⚡︎'
+    free_for: Vip
+  - name: pause
+    doc: |
+      Pause/unpause the music.
+    args:
+    - name: state
+      doc: a boolean value (true/t/yes/y/1 or false/f/no/n/0), optional
+      optional: true
+    permission: Moderator
   - name: song-request
     doc: |
       Adds the given song to the YouTube Music queue.
@@ -691,6 +697,11 @@ categories:
       optional: true
     sender_gate: '1m'
     shortcode: sr
+  - name: cancel-request
+    doc: |
+      Removes the last song you requested from the queue.
+    sender_gate: '5s'
+    shortcode: cr
   - name: music-queue
     doc: |
       List the songs that were requested through `song-request~`.
@@ -699,19 +710,12 @@ categories:
       doc: a non-negative number, optional
       optional: true
     global_gate: '30s'
-  - name: music-queue-reset
+    shortcode: mq
+  - name: clear-music-queue
     doc: |
       A helper command to help fix potential music queue issues.
     permission: Moderator
-  - name: volume
-    doc: |
-      Get or set the YouTube Music volume.
-    args:
-    - name: volume
-      doc: a number in range from 0 to 100, optional
-      optional: true
-    permission: Vip
-    sender_gate: '3s'
+    shortcode: cmq
 - name: Stats
   commands:
   - name: stat
