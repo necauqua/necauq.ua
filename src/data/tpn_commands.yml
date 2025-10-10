@@ -374,10 +374,15 @@ categories:
       The difference is that any script errors are ignored, and this command
       always succeeds, without preventing the repeats from continuing or setting
       last-error.
+
+      The `catch` script, if given, is executed only if the main script errors out.
     args:
     - name: script
       doc: a script string
       optional: false
+    - name: catch
+      doc: a script string, optional
+      optional: true
   - name: loop
     doc: |
       Repeatedly execute a given script indefinitely - until an interrupt is
