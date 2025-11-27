@@ -1,4 +1,11 @@
 [[list]]
+name = "Limatoukka the Bot"
+url = "https://necauq.ua/tpn-script-reference/"
+desc = '''
+My funky chatter-scriptable Twitch bot, born out of Twitch Plays Noita.
+'''
+
+[[list]]
 name = "Noita Utility Box"
 url = "https://github.com/necauqua/noita-utility-box"
 desc = '''

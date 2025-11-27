@@ -8,6 +8,9 @@ categories:
     - name: premise
       doc: string
       optional: false
+    - name: auto-close
+      doc: a boolean value (true/t/yes/y/1 or false/f/no/n/0), optional
+      optional: true
     - name: options
       doc: the rest of the arguments
       optional: false
@@ -200,6 +203,7 @@ categories:
       Ping fails if you were the last person to do it!
 
       There is also some magical property to this command..
+    sender_gate: '100ms'
     cost: '-1⚡︎'
   - name: last-pinger
     doc: |
@@ -445,6 +449,7 @@ categories:
       doc: string, optional
       optional: true
     permission: Moderator
+    global_macro_exempt: true
   - name: let
     doc: |
       Similar to `set~`, but the text is only stored for the chat message being executed.
@@ -650,6 +655,11 @@ categories:
       Get the title of the song that's currently playing on stream, if any.
     global_gate: '5s'
     shortcode: np
+  - name: last-playing
+    doc: |
+      Get the title of the song was playing before the current one, if any.
+    global_gate: '5s'
+    shortcode: lp
   - name: volume
     doc: |
       Get or set the YouTube Music volume.
@@ -760,6 +770,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
+    shortcode: fm
   - name: last-message
     doc: |
       Get the last message sent by a user (or you) in chat.
@@ -768,6 +779,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     sender_gate: '3s'
+    shortcode: lm
   - name: top
     doc: |
       Get a list of top-N chatters of all time, by number of sent messages.
@@ -816,6 +828,15 @@ categories:
     permission: Caster
     global_macro_exempt: true
     sender_gate: '5s'
+  - name: error
+    doc: |
+      Always errors with the given text.
+    args:
+    - name: text
+      doc: string
+      optional: false
+    permission: Caster
+    global_macro_exempt: true
   - name: last-error
     doc: |
       Respond with the last error message for user.
