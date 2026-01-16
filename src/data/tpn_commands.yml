@@ -203,7 +203,7 @@ categories:
       Ping fails if you were the last person to do it!
 
       There is also some magical property to this command..
-    sender_gate: '100ms'
+    sender_gate: '10s'
     cost: '-1⚡︎'
   - name: last-pinger
     doc: |
@@ -530,6 +530,22 @@ categories:
     - name: else
       doc: a script string, optional
       optional: true
+  - name: if-lt
+    doc: |
+      Runs the `then` script if the first number is less than the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
   - name: if-gt
     doc: |
       Runs the `then` script if the first number is greater than the second, otherwise runs the `else` script if given.
@@ -549,22 +565,6 @@ categories:
   - name: if-le
     doc: |
       Runs the `then` script if the first number is less than or equal to the second, otherwise runs the `else` script if given.
-    args:
-    - name: a
-      doc: a number
-      optional: false
-    - name: b
-      doc: a number
-      optional: false
-    - name: then
-      doc: a script string
-      optional: false
-    - name: else
-      doc: a script string, optional
-      optional: true
-  - name: if-lt
-    doc: |
-      Runs the `then` script if the first number is less than the second, otherwise runs the `else` script if given.
     args:
     - name: a
       doc: a number
@@ -641,12 +641,23 @@ categories:
       Sounds ids are secret, but look through `global-macro-list~` for macros that
       use this command to get an idea of what sounds are available.
 
+      If given, the `start` parameter specifies the number of milliseconds to
+      skip from the start of the sound.
+      The `time` parameter (if given) specifies the number of milliseconds of the
+      song to actually play.
+
       Sender gate is at least 10 seconds for everything, but individual sounds
       have their own dynamic cooldowns.
     args:
     - name: sound-id
       doc: string
       optional: false
+    - name: start
+      doc: a non-negative number, optional
+      optional: true
+    - name: time
+      doc: a non-negative number, optional
+      optional: true
     permission: Caster
     global_macro_exempt: true
     sender_gate: '10s'
@@ -680,7 +691,7 @@ categories:
     doc: |
       A "back" button, undoes skips or otherwise goes back to the previous song.
     global_gate: '15s'
-    cost: '1⚡︎'
+    cost: '2⚡︎'
     free_for: Vip
   - name: pause
     doc: |
@@ -886,6 +897,7 @@ categories:
     - name: chatter
       doc: a user login, optional
       optional: true
+    shortcode: int
   - name: discard
     doc: |
       Interrupt all commands *originating from the current message*.
