@@ -29,7 +29,7 @@
 {{ $perms = merge $perms (dict $perm.name $perm.description) }}
 {{ end }}
 
-<h2>Permission levels</h2>
+<h2 id="permission-levels">Permission levels</h2>
 I am obviously just looking at the message badges lmao
 <ul>
   {{ range .Site.Data.tpn_commands.permissions }}

@@ -37,7 +37,7 @@ categories:
       doc: string
       optional: false
     - name: wager
-      doc: a number of charges, in form of a number with up to 3 decimal places, optional
+      doc: a number of charges, in form of a number with up to 3 decimal places. Alternatively, `*`/`all`/`allin`/`everything` for your current balance., optional
       optional: true
     sender_gate: '5s'
   - name: get-bet
@@ -85,6 +85,10 @@ categories:
   - name: kicks
     doc: |
       The amount of kicks registered by the game in the current run
+    global_gate: '15s'
+  - name: shifts
+    doc: |
+      The amount of fungal shifts in the current run
     global_gate: '15s'
   - name: perks
     doc: |
@@ -173,7 +177,7 @@ categories:
       doc: a user login
       optional: false
     - name: amount
-      doc: a number of charges, in form of a number with up to 3 decimal places
+      doc: a number of charges, in form of a number with up to 3 decimal places. Alternatively, `*`/`all`/`allin`/`everything` for your current balance.
       optional: false
     global_macro_exempt: true
     sender_gate: '3s'
@@ -188,7 +192,7 @@ categories:
       doc: a user login, defaults to you
       optional: true
     - name: amount
-      doc: a number of charges, in form of a number with up to 3 decimal places
+      doc: a number of charges, in form of a number with up to 3 decimal places. Alternatively, `*`/`all`/`allin`/`everything` for your current balance.
       optional: false
     permission: Caster
   - name: ping
@@ -203,7 +207,7 @@ categories:
       Ping fails if you were the last person to do it!
 
       There is also some magical property to this command..
-    sender_gate: '10s'
+    sender_gate: '15s'
     cost: '-1⚡︎'
   - name: last-pinger
     doc: |
@@ -530,22 +534,6 @@ categories:
     - name: else
       doc: a script string, optional
       optional: true
-  - name: if-lt
-    doc: |
-      Runs the `then` script if the first number is less than the second, otherwise runs the `else` script if given.
-    args:
-    - name: a
-      doc: a number
-      optional: false
-    - name: b
-      doc: a number
-      optional: false
-    - name: then
-      doc: a script string
-      optional: false
-    - name: else
-      doc: a script string, optional
-      optional: true
   - name: if-gt
     doc: |
       Runs the `then` script if the first number is greater than the second, otherwise runs the `else` script if given.
@@ -578,6 +566,22 @@ categories:
     - name: else
       doc: a script string, optional
       optional: true
+  - name: if-lt
+    doc: |
+      Runs the `then` script if the first number is less than the second, otherwise runs the `else` script if given.
+    args:
+    - name: a
+      doc: a number
+      optional: false
+    - name: b
+      doc: a number
+      optional: false
+    - name: then
+      doc: a script string
+      optional: false
+    - name: else
+      doc: a script string, optional
+      optional: true
 - name: Moderation
   commands:
   - name: banish
@@ -593,6 +597,7 @@ categories:
       doc: duration in freeform format (using `humantime` Rust library), so `10s`, or `2 minutes` or `1h30m` etc, optional
       optional: true
     permission: TwitchStaff
+    global_macro_exempt: true
   - name: unbanish
     doc: |
       Restore users ability to use the bot, bringing them back from the shadow
@@ -622,6 +627,10 @@ categories:
       optional: false
     permission: Moderator
     global_gate: '5s'
+  - name: die
+    doc: |
+      Kills the bot ¯\_(ツ)_/¯
+    permission: Caster
 - name: Sounds
   commands:
   - name: tts
@@ -630,6 +639,9 @@ categories:
     args:
     - name: msg
       doc: string
+      optional: false
+    - name: extra
+      doc: the rest of the arguments
       optional: false
     global_macro_exempt: true
     sender_gate: '1m'
@@ -721,7 +733,9 @@ categories:
     - name: extra
       doc: string, optional
       optional: true
-    sender_gate: '1m'
+    - name: extra-extra
+      doc: the rest of the arguments
+      optional: false
     shortcode: sr
   - name: cancel-request
     doc: |
@@ -875,6 +889,15 @@ categories:
       doc: duration in milliseconds, will be limited to at most 300000, defaults to 500
       optional: true
     shortcode: w
+  - name: force-wait
+    doc: |
+      Caster-only uninterruptible wait for a specified duration milliseconds.
+    args:
+    - name: duration
+      doc: duration in milliseconds, will be limited to at most 300000, defaults to 500
+      optional: true
+    permission: Caster
+    shortcode: fw
   - name: break
     doc: |
       Complete all current holds immediately.
