@@ -178,7 +178,7 @@ completely missed, sounds valuable to me.
 That one I kinda was agreeing with even before this whole eye-opening
 experience I've described above.
 
-## Slop
+## Why it works
 
 Unlike things like NFTs, large language models are unambiguously useful, in a
 plethora of applications. They have been a major boost to my productivity *and*
@@ -191,6 +191,8 @@ And I have something that people who use LLMs to code without knowing what
 they're doing do not - I understand what they are writing, I have the critical
 mass of knowledge (and opinions) where I learn from them and correct them,
 no *actual vibecoding* here.
+
+## Slop
 
 All of that being said, there are two big things that are completely ruining the
 perception of AI, ignoring all the IRL material costs (RAM prices, datacenters,
