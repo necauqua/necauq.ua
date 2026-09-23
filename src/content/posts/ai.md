@@ -141,28 +141,30 @@ implement it, give it the choices you make and let it go at it.
 
 ## Ghidra MCP
 
-Some of the people reading this might know I dabble in Noita modding a little,
-in fact I made a whole framework that wraps around TypeScriptToLua to be able to
-write Noita mods in TypeScript. It has a builtin workaround for a certain
-`dofile` idiosyncrasy of how the Noita Lua API works, and a bunch of nice
-autocompletions for things, which was the whole point of making it in the first
-place.
+After installing Ghidra MCP and pointing Claude at it, I built a thing I utterly
+would never have managed otherwise: a mod that improves the Noita replay editor,
+so you can scrub the replay frame-by-frame, as well as export replays as mp4,
+which is a way better format than gif. It works much faster too, since we
+brought the real library in. Maybe I'll write a separate post about all that.
 
-Additionally, you can open Noita in Ghidra to look at the actual engine code - I'd
-argue Noita is one of the easier things to disassemble and look at, good
-learning experience. I have done so, annotated some stuff, found interesting
-bits and bobs.
+Some context: some of the people reading this might know I dabble in Noita
+modding a little, in fact I made a whole framework that wraps around
+TypeScriptToLua to be able to write Noita mods in TypeScript. It has a builtin
+workaround for a certain `dofile` idiosyncrasy of how the Noita Lua API works,
+and a bunch of nice autocompletions for things, which was the whole point of
+making it in the first place, as well as many other utilities. I mostly made it
+for myself, it also has a CLI that can start an isolated Noita instance
+conveniently, build and publish the mod and so on.
 
-However, after installing Ghidra MCP and pointing Claude at it, I have been
-able to build things I utterly would never have managed to otherwise. Like, it
-would be physically possible for me to make that project without assistance, but
-the time and effort requirements would've been way past my limits for what is
-basically a hobby, especially with my low energy and mood reserves lately.
+And you can open Noita in Ghidra to look at the actual engine code - I'd argue
+Noita is one of the easier things to disassemble and look at, good learning
+experience. I have done so, annotated some stuff, found interesting bits and
+bobs.
 
-The project I'm talking about is the mod that improves the replay editor by
-making it possible to scrub the replay frame-by-frame, as well as export replays
-as mp4, which is a way better format than gif. It works much faster too, since
-we brought the real library in. Maybe I'll write a separate post about all that.
+Like, it would be physically possible for me to make that project without
+assistance, but the time and effort requirements would've been way past my
+limits for what is basically a hobby, especially with my low energy and mood
+reserves lately.
 
 ## Review & Research
 
