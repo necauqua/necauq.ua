@@ -27,20 +27,20 @@ finishing this, because my personal history with LLMs is of course different.
 
 In late spring of 2026, my LLM usage boiled down to using Claude (which I have
 been paying for since 2025) as a ChatGPT replacement (which I have also paid for
-before, but I cancelled and switched to Claude at some point because I've heard
+before, but I cancelled and switched to Claude at some point because I'd heard
 "it's better for coding") - just talking to it, asking for general programming
 knowledge and documentation, how to do this and that, basically a way better
 search engine, because SEO slop has ruined just googling stuff.
 
 At most I've manually copied half a screen of code it made for me, like a single
-function, that I then vigorously reread and maybe also completely rewrote, and
+function, that I then rigorously reread and maybe also completely rewrote, and
 left a bunch of comments "yup this is megaslop, actually vibecoded this one, yes
 yes, I stooped that low".
 
 ### Actually trying out a harness
 
 Then my employer kindly asked me, "how much of those infinite Claude tokens we
-recently started paying big boy money for are you using?". It's nothing too bad,
+recently started paying big boy money for are you using?" It's nothing too bad,
 I do believe they were just looking into how much people are using/not using it
 to measure impact, optimize costs and so on. They are not forcing anyone to burn
 tokens or anything, my current employer seems more than fine in that regard
@@ -49,7 +49,7 @@ compared to some of the stories we've been hearing.
 At the time, however, I kinda did believe I needed to burn some tokens to not
 stand out from the crowd, so I actually tried using Claude Code then. I had
 heard of harnesses before: basically you wire a model to do certain actions via
-specially formatted toolcalls. Instead of asking a slow and stupid human to read
+specially formatted tool calls. Instead of asking a slow and stupid human to read
 relevant files, research, debug and experiment, it can just, like, do it
 itself - you just have to run it through a program that allows it to. But I was
 kind of paranoid and skeptical about hallucinations and whatnot, so initially I
@@ -70,9 +70,9 @@ for years.
 The thing is - everything it did (mind you, the tasks were simple) was flawless,
 refactor - done, I don't like something, tell it to improve⁠/⁠fix⁠/⁠change it -
 done, implement a simple endpoint - done. And I _see the reasoning_, the steps
-it took; it asked for permission to run those little oneshot scripts LLMs do to
+it took; it asked for permission to run those little one-shot scripts LLMs do to
 test, experiment, reliably refactor something, etc. In the case of the simple
-endpoint it _looked around_, saw other similar endpoints, and replicated the
+endpoint, it _looked around_, saw other similar endpoints, and replicated the
 shape, the logging, code style, naming, you name it. And then the tests. Boy do
 I never write tests, at most I can maintain/extend an existing test suite - and
 it wrote a bunch of them. Yeah, some of them kinda test nothing useful, but it's
@@ -97,7 +97,7 @@ ask it to make those extensions to itself to better suit your particular
 workflow.
 
 We made a statusbar plugin that runs a little curl command I copied from
-devtools to show me the usage limits. A tool call that enforces a specific jj
+devtools to show me the usage limits. A tool that enforces a specific jj
 commit format. A sandbox tool that fires up a podman container for those one-off
 data processing scripts it makes, to not bother me with permission prompts. Oh
 btw, you want to install a permission extension; by default pi comes with none,
@@ -131,7 +131,7 @@ done" and after a bit of deliberation it will give you an answer that is
 _significantly_ better than one you'd have gotten yourself after a day of
 research. And it didn't just hallucinate it out of thin air, it can google stuff
 itself. And most importantly, what they do now is ***test***. It will ***test***
-its own claims before presenting them. It would look at _actual sources_ from
+its own claims before presenting them. It will look at _actual sources_ from
 the nix store, be it nix modules or even literally the source code of the
 service we're looking at. It will _run a temp setup real quick_ to check if the
 suggested setup has any merit - and only then report its findings.
@@ -149,7 +149,7 @@ brought the real library in. Maybe I'll write a separate post about all that.
 
 Some context: some of the people reading this might know I dabble in Noita
 modding a little, in fact I made a whole framework that wraps around
-TypeScriptToLua to be able to write Noita mods in TypeScript. It has a builtin
+TypeScriptToLua to be able to write Noita mods in TypeScript. It has a built-in
 workaround for a certain `dofile` idiosyncrasy of how the Noita Lua API works,
 and a bunch of nice autocompletions for things, which was the whole point of
 making it in the first place, as well as many other utilities. I mostly made it
@@ -170,20 +170,20 @@ reserves lately.
 
 One thing that is undeniably harmless is asking it to review anything you
 wrote - yourself, no LLMs, big hater, sure. However, when doing some experiments
-with DLL injection for Noita modding I just asked it to check the things I'm
-doing and it found countless bugs, holes, leaks and other actually embarrassing
+with DLL injection for Noita modding, I just asked it to check the things I was
+doing, and it found countless bugs, holes, leaks and other actually embarrassing
 things I was doing there. Like, it would point you at things *it thinks* are
 important. And even if you're a huge skeptic - even one out of ten findings that
 *you*, the person supposedly knowing what they're writing, completely missed,
 sounds valuable to me.
 
-That one I kinda was agreeing with even before this whole eye-opening experience
+That one I kinda agreed with even before this whole eye-opening experience
 I've described above.
 
 ## Why it works
 
-Unlike things like NFTs, large language models are unambiguously useful, in a
-plethora of applications. They have been a major boost to my productivity *and*
+Unlike NFTs, large language models are unambiguously useful in a plethora of
+applications. They have been a major boost to my productivity *and*
 to my quality.
 
 "But that means your quality was trash before them" - yes, I guess it means
@@ -215,7 +215,7 @@ everyone.
 
 ## The genie
 
-You've heard this argument before, but - the genie is out of the lamp, yes, yes,
+You've heard this argument before, but - the genie is out of the bottle, yes, yes,
 they stole the internet, it is used for many stupid, malicious and slop
 purposes.
 
@@ -249,5 +249,5 @@ Those are the two extremes, and both extremes are stupid.
 Having experienced it properly, I am now in more of the AI-leaning moderate
 group I feel like.
 
-It is sad, I hope as time progresses more people will see that LLMs for coding
-actually have merit.
+It is sad; I hope that, as time progresses, more people will see that LLMs for
+coding actually have merit.
