@@ -30,7 +30,7 @@ been paying for since 2025) as a ChatGPT replacement (which I have also paid
 for before, but I cancelled and switched to Claude at some point because I've
 heard "it's better for coding") - just talking to it, asking for general
 programming knowledge and documentation, how to do this and that, basically a
-way better search engine, because of SEO slop ruining just googling stuff.
+way better search engine, because SEO slop has ruined just googling stuff.
 
 At most I've manually copied half a screen of code it made for me, like a single
 function, that I then vigorously reread and maybe also completely rewrote,
@@ -210,6 +210,20 @@ what it's supposed to, etc etc. If the maintainer sees *any* clue of it being
 of hundreds and thousands of spam PRs by slop kiddies ruining everything for
 everyone.
 
+## The genie
+
+You've heard this argument before, but - the genie is out of the lamp, yes,
+yes, they stole the internet, it is used for many stupid, malicious and slop
+purposes.
+
+Refusing to put it to good use for your benefit _does nothing_.
+
+And it does not mean you're against somehow managing to get some justice for the
+aforementioned stealing of the entire internet - would be nice if they got some
+comeuppance, although that seems unlikely.
+
+## Conclusion
+
 I see opinions from people who _I am certain_ are in the same boat as I was
 before spring 2026 - didn't truly use a good LLM with a harness to work on personal
 projects, and do not grasp how insanely good they've actually gotten and how
@@ -219,3 +233,18 @@ as "complete and utter slop garbage", equating it to the slop-slop-slop-slop tha
 
 It is sad, I hope as time progresses more people will see that LLMs for coding
 actually have merit.
+
+You see a lot of people on the internet fully embracing the slop - usually for
+social or financial gain. Pretending something you're not also seems to be a
+thing, again literall either for social (ego boost?.) or finanical gain (literal
+scam).
+
+Also you see a lot of people rejecting AI outright, and while it makes sense
+for generative AI, for things like coding and some adjacent applications it is
+an incredible tool, invaluable even. You know, large **language** models seem
+to be good at this natural language thing, as well as coding language.
+
+Those are the two extremes, and both extremes are stupid.
+
+Having experienced it properly I am now in more of the the AI-leaning moderate
+group I feel like.
