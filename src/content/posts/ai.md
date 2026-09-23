@@ -23,6 +23,8 @@ finishing this, because my personal history with LLMs is of course different.
 
 ## My history of using LLMs
 
+### A better search engine
+
 In late spring of 2026, my LLM usage boiled down to using Claude (which I have
 been paying for since 2025) as a ChatGPT replacement (which I have also paid
 for before, but I cancelled and switched to Claude at some point because I've
@@ -34,6 +36,8 @@ At most I've manually copied half a screen of code it made for me, like a single
 function, that I then vigorously reread and maybe also completely rewrote,
 and left a bunch of comments "yup this is megaslop, actually vibecoded this one,
 yes yes, I stooped that low".
+
+### Actually trying out a harness
 
 Then my employer kindly asked me, "how much of those infinite Claude tokens we
 recently started paying big boy money for are you using?". It's nothing too bad,
@@ -62,6 +66,8 @@ it would reliably correctly copy it byte-for-byte, and I was meticulously
 checking over every instance of that, mostly with Copilot, which I *have* been
 using for years.
 
+### The corruption
+
 The thing is - everything it did (mind you, the tasks were simple) was flawless,
 refactor - done, I don't like something, tell it to improve⁠/⁠fix⁠/⁠change it -
 done, implement a simple endpoint - done. And I _see the reasoning_, the steps
@@ -76,10 +82,12 @@ it's **way better than nothing**!
 And so, as I was _actually using_ the slop machine, not just seeing the absolute
 and utter garbage that image generation AI is used for - and, believe it or not,
 its output is not _incomprehensible_ to me, you know, years of programming
-experience, decades at this point.. - I got corrupted.
+experience, decades at this point - I changed my mind.
 
 To be clear, it is _painfully obviously_ not perfect, nothing is, hello, but
 it's _good enough_ - often it is _better_ than whatever I would've done.
+
+### Personal projects
 
 Then there comes the productivity, boy, the productivity. At this point, I've
 already started using [pi.dev](https://pi.dev/) for my personal projects, and
@@ -103,6 +111,8 @@ something you figured out you need to always make it do, etc etc.
 I'll give you a couple of examples: "Always use a tool/code to perform any
 mathematical calculation, no matter how trivial. You can use the `calc` command for this.",
 "Always prefer to use `uv` when running Python or writing Python scripts" etc.
+
+### NixOS
 
 And so after you get a workflow down, after you calm the paranoia down a
 bit, you can.. just go at it. I have not made any major NixOS config changes in
