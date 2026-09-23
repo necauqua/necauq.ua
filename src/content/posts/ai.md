@@ -98,11 +98,11 @@ you ask it to make those extensions to itself to better suit your particular
 workflow.
 
 We made a statusbar plugin that runs a little curl command I copied from
-devtools to show me the usage limits. A tool call that enforces the jj commit
-format (oh, we'll get to that btw). A sandbox tool that fires up a podman
-container for those one-off data processing scripts it makes, to not bother me
-with permission prompts. Oh btw, you want to install a permission extension; by
-default pi comes with none, meh.
+devtools to show me the usage limits. A tool call that enforces a specific jj
+commit format. A sandbox tool that fires up a podman container for those one-off
+data processing scripts it makes, to not bother me with permission prompts. Oh
+btw, you want to install a permission extension; by default pi comes with none,
+meh.
 
 Also after having a session you just ask it to add a point about something to
 the global AGENTS.md file so it always remembers some preference of yours,
