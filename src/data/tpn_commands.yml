@@ -162,6 +162,22 @@ categories:
       optional: true
     sender_gate: '3s'
     shortcode: b
+  - name: oilers
+    doc: |
+      Get a list of top-N chatters by their charge balance
+    args:
+    - name: 'n'
+      doc: a number in range from 1 to 15, optional
+      optional: true
+    sender_gate: '1m'
+  - name: oil
+    doc: |
+      Get the place of the chatter (or you) in the "leaderboard" of how many charges they have
+    args:
+    - name: chatter
+      doc: a user login, defaults to you
+      optional: true
+    sender_gate: '1m'
   - name: unleash-me
     doc: |
       Spend a charge to remove all of your current timeouts.
@@ -812,7 +828,7 @@ categories:
     - name: 'n'
       doc: a number in range from 1 to 15, optional
       optional: true
-    sender_gate: '10m'
+    sender_gate: '1m'
   - name: rank
     doc: |
       Get the place of the chatter (or you) in the "leaderboard" of how many messages they ~~spammed~~ sent
