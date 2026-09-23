@@ -251,3 +251,16 @@ group I feel like.
 
 It is sad; I hope that, as time progresses, more people will see that LLMs for
 coding actually have merit.
+
+---
+
+<small>
+P.S.<br>
+I did ask the clanker to proofread this, and we did: fix grammar, typos and
+missing articles, split the history section into subsections (I titled them, it
+suggested some slop), break up the six longest run-on sentences, halve the
+<code>..</code> density, reduce the slop rant, and reorder sentences in the
+Ghidra section and the conclusion.
+
+This did help readability, and the whole rant is still entirely my own.
+</small>
