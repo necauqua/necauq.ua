@@ -9,6 +9,11 @@ html {
   max-width: 80rem;
 }
 
+/* cactus hyphenates paragraphs, wrap whole words instead */
+.content p {
+  hyphens: none;
+}
+
 /* a pleasant no-js fade-in-out on chrome for free  */
 @view-transition {
   navigation: auto;
