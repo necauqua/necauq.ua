@@ -1,0 +1,210 @@
++++
+date = '2026-09-20T12:06:10+03:00'
+title = 'Personal AI usage disclosure'
+tags = ['dev', 'yapping', 'llm']
++++
+
+> [!warning] Important
+> Since people have strong opinions about it and in an effort to keep things
+> honest, let me write it once here so I can link to it from relevant README files
+> and be done with it:
+> 
+> ✨ I use LLMs when working on my projects. ✨
+> 
+> If you have problems with it you have been informed.
+
+This post is completely inspired by [that
+one](https://dpc.pw/posts/personal-ai-usage-disclosure/) — in fact I did copy
+the starting paragraph verbatim as it spoke to me ¯\\\_(ツ)_/¯ (had to google
+"em dash" like a caveman to put it right here).
+
+I agree with everything outlined there, 100% - so please read that, maybe after
+finishing this because my personal history with LLMs is of course different.
+
+## My history of using LLMs
+
+In late spring of 2026 my LLM usage boiled down to using Claude (which I have
+been paying for since 2025) as a ChatGPT replacement (which I have also paid
+for before, but I cancelled and switched to Claude at some point because I've
+heard "it's better for coding") - just talking to it, asking general programming
+knowledge and documentation, how to do this and that, basically a way better
+search engine, because of SEO slop ruining just googling stuff.
+
+At most I've manually copied half a screen of code it made for me, like a single
+function, that I then vigorously reread and maybe also completely rewrote it,
+and left a bunch of comments "yup this is megaslop, actually vibecoded this one,
+yes yes, stoop that low".
+
+Then my employer kindly asked me, "how much of those infinite Claude tokens we
+recently started paying big boy money for are you using?". It's nothing too bad,
+I do believe they were just looking into how much people are using/not using it
+to measure impact, optimize costs and so on. They are not forcing anyone to burn
+tokens or anything, my current employer seems more than fine in that regard
+compared to some of the stories we've been hearing.
+
+At the time, however, I kinda did believe I need to burn some
+tokens to not stand out from the crowd, so actually tried using Claude Code
+then. I've heard of harnesses before, basically wiring a model to do certain
+actions via specially formatted toolcalls - instead of asking slow and stupid
+human to do this and that to read relevant files, research, debug and experiment
+it can just like, do it itself, you just have to run it though a program that
+allows it to. But I was kind of paranoid and skeptical about hallucinations and
+whatnot, so initially I did not really believe in the concept, despite Linus
+Torvalds himself saying he vibecoded some side-project by "removing the human
+obstacle between the model and the code", which in hindsight makes perfect
+sense actually.
+
+So, I forward some simple tasks to Claude Code and then neurotically review
+all the code it makes. There was also this thing where I did not believe for
+some reason that models are good at copying things - like if you have some very
+specific string that needs to be refactored to another place I did not believe
+it would reliably correctly copy it byte-for-byte, and I was meticulously
+checking over every instance of that, mostly with copilot which I *have* been
+using for years.
+
+The thing is - everything it did (mind you tasks were simple) was flawless,
+refactor - done, I dont like something, tell it to improve⁠/⁠fix⁠/⁠change it -
+done, implement a simple endpoint - done. And I _see the reasoning_, the steps
+it took, it asked for permission to run those little oneshot scripts LLMs do to
+test, experiment, reliably refactor something, etc.. In the case of the simple
+endpoint it _looked around_, saw other similar endpoints, and replicated the
+shape, the logging, code style, naming, you call it. And then the tests - boy
+do I never write tests, at most I can maintain/extend an existing test suite -
+it wrote a bunch of tests, and yeah some of them kinda test nothing useful, but
+its **way better than nothing**!
+
+And so, as I was _actually using_ the slop machine, not just seeing absolute
+and utter garbage that image generation AI is used for, and believe it or not,
+its output is not _incomprehensible_ to me - you know, years of programming
+experience, decades at this point.. I got corrupted.
+
+To be clear, it is _painfully obviously_ not perfect, nothing is, hello, but
+its _good enough_ - often it is _better_ than whatever I would've done.
+
+Then there comes the productivity, boy, the productivity. At this point, I've
+already started using [pi.dev](https://pi.dev/) for my personal projects, and
+that particular harness is peculiar in that the first vibeco.. *cough-cough*
+AI-assisted project you do with it is improve itself. It is very minimal, but
+quite hackable with TypeScript extensions, and the whole philosophy is that
+you ask it to make those extensions to itself to better suit your particular
+workflow.
+
+We made a statusbar plugin that runs a script with a little curl command
+I copied from devtools to show me the usage limits, made a toolcall that enforces jj
+commit format (oh we'll get to that btw), a sandbox tool that fires up a podman
+container for those one-off data processing scripts it makes to not bother me
+with permission prompts.. Oh btw you want to install a permission extension, by
+default pi comes with none, meh.
+
+Also after having a session you just ask it to add a point about something to
+the global AGENTS.md file so it always remembers some preference of yours,
+something you figured out you need to always make it do, etc etc.
+
+I'll give you an example: "Always use a tool/code to perform any mathematical
+calculation, no matter how trivial. You can use the `calc` command for this.",
+"Always prefer to use `uv` when running Python or writing Python scripts" etc.
+
+And so after you got a workflow down, after you calmed down the paranoia down a
+bit you can.. just go at it. I have not made any major NixOS config changes in
+months, without the majority of it being Claude-generated.. and then reviewed,
+prompted to fix/improve/rewrite/change stuff, then squash it all down into neat
+jj commit. And the AGENTS.md of the nix config prompts it to try to build the
+config after its done, so if it sees issues it fixes those - at the end you
+always get something that at least builds.. Which is why writing Rust or
+TypeScript is quite popular with LLMs, more automated guarantees earlier, kinda
+like that.
+
+The thing about tinkering with NixOS, or just working on personal hobby
+programming projects in general, is that it takes time and energy to figure out
+stuff, which I kind of lack an excess of as of late. With an LLM, you ask it
+"yo can this be done" and after a bit of deliberation it will give you an
+answer that is _exceptionally_ better than one you'd have gotten yourself after
+a day of research. And it didn't just hallucinate it out of thin air, it can
+google stuff itself, and most importantly, what they do now, is ***test*** - it
+will ***test*** its own claims before presenting them, it would look at _actual
+sources_ from nix store, be it of nix modules or even literally source code of
+the service we're looking at, it will _run a temp setup real quick_ to check if
+suggested setup has any merit - and only then it would report its findings.
+
+And then with all that juicy context already loaded, you just tell it to
+implement it, give it the choices you make and let it go at it.
+
+## Ghidra MCP
+
+Some of people reading this might know I dabble in noita modding a little, in
+fact I made a whole framework that wraps around TypeScriptToLua to be able to
+write Noita mods in TypeScript, has a builtin workaround for a certain `dofile`
+idiosyncrasity of how Noita Lua API works, and a bunch of nice autocompletions
+for things, the whole point of making it in the first place.
+
+Additionally, you open Noita in Ghidra to look at the actual engine code - I'd
+argue Noita is one of the easier things to disassemble and look at, good
+learning experience. I have done so, annotated some stuff, found interesting
+bits and bobs.
+
+However, after installing Ghidra MCP and pointing Claude at it, I have been
+able to achieve things I utterly would not have ever manage to build. Like, it
+is physically possible for me to make that project without assistance, but the
+time and effort requirements would've been way past my limits for what is
+basically a hobby, especially with my low energy and mood reserves in recent
+time.
+
+This project I'm talking about the mod that improves the replay editor by making
+it possible to scrub the replay frame-by-frame, as well as export replays in
+mp4, which is a way better format than gif, and it works much faster too, we
+brought the real library in. Maybe I'll write a separate post about all that.
+
+## Review & Research
+
+One thing that is undeniably harmless, is asking it to review anything you
+wrote - yourself, no LLMs, big hater, sure. However, when doing some
+experiments with DLL injection for Noita modding I just asked it to check the
+things I'm doing and it found countless bugs, holes, leaks and other actually
+embarassing things I was doing there. Like, it would point you at things
+*it thinks* are important, and even if you're a huge skeptic, even one out of
+ten findings that *you*, the person supposedly knowing what they're writing,
+completely missed - sounds valuable to me.
+
+That one I kinda was agreeing with even before this whole eye opening
+experience I've described above.
+
+## Slop
+
+Unlike things like NFTs, large language models are unambiguously useful, in
+plethora of applications. They have been a major boost in my productivity *and*
+a quality increase.
+
+"But that means your quality was trash before them" - yes, I guess it means
+that, woe is me. For my purposes, increase is an increase ¯\\\_(ツ)_/¯
+
+And I have something that people who use LLMs to code without knowing what
+they're doing do not - I understand what they are writing, I have the critical
+mass of knowledge (and opinions) where I learn from them and correct them,
+no *actual vibecoding* here.
+
+All of that being said, there are two big things that are completely ruining the
+perception of AI, ignoring all the IRL material costs (RAM prices, datacenters,
+*water* for some reason, etc):
+
+1. Generative AI - while it probably is still more useful than NFTs, 99 point
+idk how many nines percent of generative AI is literal cancer. Yes yes artists
+are crying, but also its just slop slop slop slop, tiktok slop, meme slop,
+3d printing models slop, deepfake slop (ouch) and so much more.
+
+2. Slop spam - people just.. misusing this amazing tool, to vibe-write reports,
+vibe-spam, vibecode shit and push the burden of review on maintainers..
+If I make a pull request with an LLM, I have a reason to, I am certain it does
+what it's supposed to, etc etc. If the maintainer sees *any* clue of it being
+"AI-assisted", they immediately close it, ban me and hate me forever because
+of hundreds and thousands spam PRs by slop kiddies ruining everything for
+everyone.
+
+I see opinions from people who _I am certain_ are in the same boat as me before
+spring 2026 - didn't truly use a good LLM with a harness to work on personal
+projects, and do not grasp how insanely good they've actually gotten and how
+you _can_, in fact, herd them. They denounce any project they see used AI as
+"complete and utter slop garbage" equating it to the slop-slop-slop-slop that
+(seemingly) most people are spamming.
+
+It is sad, I hope as time progresses more people will see that LLM for coding
+actually has merit.
