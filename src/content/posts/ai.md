@@ -48,11 +48,11 @@ compared to some of the stories we've been hearing.
 
 At the time, however, I kinda did believe I needed to burn some tokens to not
 stand out from the crowd, so I actually tried using Claude Code then. I had
-heard of harnesses before, basically wiring a model to do certain
-actions via specially formatted toolcalls - instead of asking a slow and stupid
-human to do this and that to read relevant files, research, debug and experiment
-it can just, like, do it itself, you just have to run it through a program that
-allows it to. But I was kind of paranoid and skeptical about hallucinations and
+heard of harnesses before: basically you wire a model to do certain actions via
+specially formatted toolcalls. Instead of asking a slow and stupid human to read
+relevant files, research, debug and experiment, it can just, like, do it
+itself - you just have to run it through a program that allows it to. But I was
+kind of paranoid and skeptical about hallucinations and
 whatnot, so initially I did not really believe in the concept, despite Linus
 Torvalds himself saying he vibecoded some side-project by "removing the human
 obstacle between the model and the code", which in hindsight makes perfect
@@ -62,8 +62,8 @@ So I forwarded some simple tasks to Claude Code and then neurotically reviewed
 all the code it made. There was also this thing where I did not believe for
 some reason that models are good at copying things - like if you have some very
 specific string that needs to be refactored to another place, I did not believe
-it would reliably correctly copy it byte-for-byte, and I was meticulously
-checking over every instance of that, mostly with Copilot, which I *have* been
+it would reliably correctly copy it byte-for-byte. So I was meticulously
+checking every instance of that, mostly with Copilot, which I *have* been
 using for years.
 
 ### The corruption
@@ -74,9 +74,9 @@ done, implement a simple endpoint - done. And I _see the reasoning_, the steps
 it took; it asked for permission to run those little oneshot scripts LLMs do to
 test, experiment, reliably refactor something, etc.. In the case of the simple
 endpoint it _looked around_, saw other similar endpoints, and replicated the
-shape, the logging, code style, naming, you name it. And then the tests - boy
+shape, the logging, code style, naming, you name it. And then the tests. Boy
 do I never write tests, at most I can maintain/extend an existing test suite -
-it wrote a bunch of tests, and yeah some of them kinda test nothing useful, but
+and it wrote a bunch of them. Yeah, some of them kinda test nothing useful, but
 it's **way better than nothing**!
 
 And so, as I was _actually using_ the slop machine, not just seeing the absolute
@@ -97,12 +97,12 @@ quite hackable with TypeScript extensions, and the whole philosophy is that
 you ask it to make those extensions to itself to better suit your particular
 workflow.
 
-We made a statusbar plugin that runs a script with a little curl command I
-copied from devtools to show me the usage limits, made a tool call that enforces
-the jj commit format (oh, we'll get to that btw), and a sandbox tool that fires
-up a podman container for those one-off data processing scripts it makes, to not
-bother me with permission prompts.. Oh btw, you want to install a permission
-extension; by default pi comes with none, meh.
+We made a statusbar plugin that runs a little curl command I copied from
+devtools to show me the usage limits. A tool call that enforces the jj commit
+format (oh, we'll get to that btw). A sandbox tool that fires up a podman
+container for those one-off data processing scripts it makes, to not bother me
+with permission prompts.. Oh btw, you want to install a permission extension; by
+default pi comes with none, meh.
 
 Also after having a session you just ask it to add a point about something to
 the global AGENTS.md file so it always remembers some preference of yours,
@@ -130,12 +130,11 @@ stuff, which I kind of lack as of late. With an LLM, you ask it
 "yo can this be done" and after a bit of deliberation it will give you an
 answer that is _significantly_ better than one you'd have gotten yourself after
 a day of research. And it didn't just hallucinate it out of thin air, it can
-google stuff itself, and most importantly, what they do now is ***test*** - it
-will ***test*** its own claims before presenting them, it would look at _actual
-sources_ from the nix store, be it of nix modules or even literally source code
-of the service we're looking at, it will _run a temp setup real quick_ to check
-if the suggested setup has any merit - and only then it would report its
-findings.
+google stuff itself. And most importantly, what they do now is ***test***. It
+will ***test*** its own claims before presenting them. It would look at _actual
+sources_ from the nix store, be it nix modules or even literally the source code
+of the service we're looking at. It will _run a temp setup real quick_ to check
+if the suggested setup has any merit - and only then report its findings.
 
 And then with all that juicy context already loaded, you just tell it to
 implement it, give it the choices you make and let it go at it.
@@ -172,9 +171,9 @@ wrote - yourself, no LLMs, big hater, sure. However, when doing some
 experiments with DLL injection for Noita modding I just asked it to check the
 things I'm doing and it found countless bugs, holes, leaks and other actually
 embarrassing things I was doing there. Like, it would point you at things
-*it thinks* are important, and even if you're a huge skeptic, even one out of
+*it thinks* are important. And even if you're a huge skeptic - even one out of
 ten findings that *you*, the person supposedly knowing what they're writing,
-completely missed - sounds valuable to me.
+completely missed, sounds valuable to me.
 
 That one I kinda was agreeing with even before this whole eye-opening
 experience I've described above.
@@ -225,11 +224,11 @@ comeuppance, although that seems unlikely.
 ## Conclusion
 
 I see opinions from people who _I am certain_ are in the same boat as I was
-before spring 2026 - didn't truly use a good LLM with a harness to work on
-personal projects, and do not grasp how insanely good they've actually gotten and how
-you _can_, in fact, herd them. They denounce any project they see that used AI
-as "complete and utter slop garbage", equating it to the slop-slop-slop-slop that
-(seemingly) most people are spamming.
+before spring 2026: they didn't truly use a good LLM with a harness to work on
+personal projects. They do not grasp how insanely good they've actually gotten,
+and how you _can_, in fact, herd them. They denounce any project they see that
+used AI as "complete and utter slop garbage", equating it to the
+slop-slop-slop-slop that (seemingly) most people are spamming.
 
 It is sad, I hope as time progresses more people will see that LLMs for coding
 actually have merit.
