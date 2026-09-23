@@ -72,7 +72,7 @@ The thing is - everything it did (mind you, the tasks were simple) was flawless,
 refactor - done, I don't like something, tell it to improve⁠/⁠fix⁠/⁠change it -
 done, implement a simple endpoint - done. And I _see the reasoning_, the steps
 it took; it asked for permission to run those little oneshot scripts LLMs do to
-test, experiment, reliably refactor something, etc.. In the case of the simple
+test, experiment, reliably refactor something, etc. In the case of the simple
 endpoint it _looked around_, saw other similar endpoints, and replicated the
 shape, the logging, code style, naming, you name it. And then the tests. Boy
 do I never write tests, at most I can maintain/extend an existing test suite -
@@ -101,7 +101,7 @@ We made a statusbar plugin that runs a little curl command I copied from
 devtools to show me the usage limits. A tool call that enforces the jj commit
 format (oh, we'll get to that btw). A sandbox tool that fires up a podman
 container for those one-off data processing scripts it makes, to not bother me
-with permission prompts.. Oh btw, you want to install a permission extension; by
+with permission prompts. Oh btw, you want to install a permission extension; by
 default pi comes with none, meh.
 
 Also after having a session you just ask it to add a point about something to
@@ -120,7 +120,7 @@ months without the majority of it being Claude-generated.. and then reviewed,
 prompted to fix/improve/rewrite/change stuff, then squashed it all down into a
 neat jj commit. And the AGENTS.md of the nix config prompts it to try to build
 the config after it's done, so if it sees issues it fixes those - at the end you
-always get something that at least builds.. Which is why writing Rust or
+always get something that at least builds. Which is why writing Rust or
 TypeScript is quite popular with LLMs, more automated guarantees earlier, kinda
 like that.
 
@@ -202,7 +202,7 @@ are crying, but also it's just slop slop slop slop, tiktok slop, meme slop,
 3D printing model slop, deepfake slop (ouch) and so much more.
 
 2. Slop spam - people just.. misusing this amazing tool, to vibe-write reports,
-vibe-spam, vibecode shit and push the burden of review on maintainers..
+vibe-spam, vibecode shit and push the burden of review on maintainers.
 If I make a pull request with an LLM, I have a reason to, I am certain it does
 what it's supposed to, etc etc. If the maintainer sees *any* clue of it being
 "AI-assisted", they immediately close it, ban me and hate me forever because
