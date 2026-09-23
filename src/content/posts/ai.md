@@ -227,16 +227,6 @@ comeuppance, although that seems unlikely.
 
 ## Conclusion
 
-I see opinions from people who _I am certain_ are in the same boat as I was
-before spring 2026: they didn't truly use a good LLM with a harness to work on
-personal projects. They do not grasp how insanely good they've actually gotten,
-and how you _can_, in fact, herd them. They denounce any project they see that
-used AI as "complete and utter slop garbage", equating it to the
-slop-slop-slop-slop that (seemingly) most people are spamming.
-
-It is sad, I hope as time progresses more people will see that LLMs for coding
-actually have merit.
-
 You see a lot of people on the internet fully embracing the slop - usually for
 social or financial gain. Pretending to be something you're not also seems to be
 a thing, again literally either for social (ego boost?.) or financial gain
@@ -247,7 +237,17 @@ generative AI, for things like coding and some adjacent applications it is an
 incredible tool, invaluable even. You know, large **language** models seem to be
 good at this natural language thing, as well as coding languages.
 
+And a lot of those opinions come from people who _I am certain_ are exactly
+where I was before spring 2026 - they didn't truly use a good LLM with a harness
+to work on personal projects, so they do not grasp how insanely good they've
+actually gotten, and how you _can_, in fact, herd them. And they denounce any
+project that used AI as "complete and utter slop garbage", equating it to the
+slop-slop-slop-slop that (seemingly) most people are spamming.
+
 Those are the two extremes, and both extremes are stupid.
 
 Having experienced it properly, I am now in more of the AI-leaning moderate
 group I feel like.
+
+It is sad, I hope as time progresses more people will see that LLMs for coding
+actually have merit.
