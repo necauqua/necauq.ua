@@ -199,7 +199,7 @@ perception of AI, ignoring all the IRL material costs (RAM prices, datacenters,
 
 1. Generative AI - while it probably is still more useful than NFTs, 99 point
 idk how many nines percent of generative AI is literal cancer. Yes yes artists
-are crying, but also its just slop slop slop slop, tiktok slop, meme slop,
+are crying, but also it's just slop slop slop slop, tiktok slop, meme slop,
 3D printing model slop, deepfake slop (ouch) and so much more.
 
 2. Slop spam - people just.. misusing this amazing tool, to vibe-write reports,
@@ -225,8 +225,8 @@ comeuppance, although that seems unlikely.
 ## Conclusion
 
 I see opinions from people who _I am certain_ are in the same boat as I was
-before spring 2026 - didn't truly use a good LLM with a harness to work on personal
-projects, and do not grasp how insanely good they've actually gotten and how
+before spring 2026 - didn't truly use a good LLM with a harness to work on
+personal projects, and do not grasp how insanely good they've actually gotten and how
 you _can_, in fact, herd them. They denounce any project they see that used AI
 as "complete and utter slop garbage", equating it to the slop-slop-slop-slop that
 (seemingly) most people are spamming.
@@ -235,16 +235,16 @@ It is sad, I hope as time progresses more people will see that LLMs for coding
 actually have merit.
 
 You see a lot of people on the internet fully embracing the slop - usually for
-social or financial gain. Pretending something you're not also seems to be a
-thing, again literall either for social (ego boost?.) or finanical gain (literal
-scam).
+social or financial gain. Pretending to be something you're not also seems to be
+a thing, again literally either for social (ego boost?.) or financial gain
+(literal scam).
 
 Also you see a lot of people rejecting AI outright, and while it makes sense
 for generative AI, for things like coding and some adjacent applications it is
 an incredible tool, invaluable even. You know, large **language** models seem
-to be good at this natural language thing, as well as coding language.
+to be good at this natural language thing, as well as coding languages.
 
 Those are the two extremes, and both extremes are stupid.
 
-Having experienced it properly I am now in more of the the AI-leaning moderate
+Having experienced it properly, I am now in more of the AI-leaning moderate
 group I feel like.
